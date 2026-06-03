@@ -1,0 +1,21 @@
+/* ── MisCitas page ─────────────────────────────────────────────────────── */
+
+/* Tab button: eliminar highlight nativo en iOS */
+.tab-btn {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Spinner de carga */
+.mc-spinner {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 2.5px solid #dee2e6;
+  border-top-color: #0085ca;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

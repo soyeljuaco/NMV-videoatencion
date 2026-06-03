@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #212529;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+  }
+}
+
+/* ── Tooltip animado Sucursal Virtual ── */
+@keyframes sv-tip {
+  0%, 100% { transform: translateX(0px); }
+  40%       { transform: translateX(5px); }
+}
+.animate-sv-tip {
+  animation: sv-tip 2.8s ease-in-out infinite;
+}
+
+/* ── Responsive animations ── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mobile-menu-open {
+  animation: slideDown 0.2s ease-out forwards;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#0085ca] text-white font-semibold rounded-full px-8 py-2 flex items-center gap-2 hover:bg-[#0074b0] transition-colors cursor-pointer;
+  }
+  .btn-secondary {
+    @apply bg-white border border-[#adb5bd] text-[#495057] font-semibold rounded-full px-6 py-3.5 flex items-center justify-center min-w-[120px] hover:bg-gray-50 transition-colors cursor-pointer text-sm;
+  }
+  .btn-continue {
+    @apply flex items-center justify-center gap-1.5 font-semibold rounded-full px-6 py-3.5 text-sm transition-colors cursor-pointer min-w-[140px];
+  }
+  .btn-continue.active {
+    @apply bg-[#0085ca] text-white hover:bg-[#0074b0];
+  }
+  .btn-continue.active img {
+    filter: brightness(0) invert(1);
+  }
+  .btn-continue.inactive {
+    @apply bg-[rgba(0,133,202,0.1)] text-[#50606e] cursor-not-allowed;
+  }
+
+  /* Green "Confirmar cita" button */
+  .btn-confirm {
+    @apply flex flex-row items-center justify-center text-sm font-semibold rounded-full transition-colors;
+    min-width: 167px;
+    height: 48px;
+    padding: 14px 24px;
+    gap: 6px;
+  }
+  .btn-confirm.active {
+    @apply bg-[#25a337] text-white hover:bg-[#1e8c2d] cursor-pointer;
+  }
+  .btn-confirm.active img {
+    filter: brightness(0) invert(1);
+  }
+  .btn-confirm.inactive {
+    @apply bg-[rgba(0,133,202,0.1)] text-[#50606e] cursor-not-allowed;
+  }
+
+  .option-card {
+    @apply bg-white border border-[#dee2e6] rounded-2xl p-6 flex flex-col gap-0 cursor-pointer hover:border-[#0085ca] hover:shadow-md transition-all;
+  }
+  .option-card.selected {
+    @apply border-[#0085ca] bg-[rgba(0,133,202,0.04)] shadow-md;
+  }
+  .radio-circle {
+    @apply w-5 h-5 rounded-full border border-[#dee2e6] flex-shrink-0 transition-all;
+  }
+  .radio-circle.checked {
+    @apply border-[#0085ca] bg-[#0085ca] flex items-center justify-center;
+  }
+  .wizard-tag {
+    @apply flex items-center gap-2 text-sm font-medium bg-[rgba(0,133,202,0.05)] border border-[rgba(0,133,202,0.3)] rounded-full px-4 py-2 text-[#212529];
+  }
+
+  /* Recolor left icon of wizard breadcrumb tags to #0085CA */
+  .wizard-tag > img:first-child {
+    filter: brightness(0) saturate(100%) invert(35%) sepia(94%) saturate(578%) hue-rotate(167deg) brightness(102%) contrast(104%);
+  }
+
+  /* ── react-phone-number-input skin ── */
+  .phone-field .PhoneInput {
+    @apply bg-white border border-[#ced4da] rounded-2xl px-4 flex items-center gap-2 transition-colors;
+    min-height: 54px;
+  }
+  .phone-field .PhoneInput:focus-within {
+    @apply border-[#0085ca];
+    box-shadow: 0 0 0 3px rgba(0,133,202,0.15);
+  }
+  .phone-field .PhoneInputCountry {
+    @apply flex items-center gap-1.5 flex-shrink-0;
+    margin-right: 4px;
+  }
+  .phone-field .PhoneInputCountrySelect {
+    @apply bg-transparent border-none outline-none text-sm text-[#212529] cursor-pointer;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  .phone-field .PhoneInputCountrySelectArrow {
+    @apply text-[#adb5bd];
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    margin-top: -4px;
+    opacity: 0.6;
+  }
+  .phone-field .PhoneInputCountryIcon {
+    @apply flex-shrink-0;
+    width: 22px;
+    height: 16px;
+  }
+  .phone-field .PhoneInputInput {
+    @apply text-sm text-[#212529] placeholder-[#adb5bd] outline-none border-none bg-transparent flex-1 py-4;
+    min-width: 0;
+  }
+}
