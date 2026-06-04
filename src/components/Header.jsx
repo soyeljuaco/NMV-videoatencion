@@ -41,7 +41,7 @@ const AYUDA_ITEMS = [
 ]
 
 // ── Component ────────────────────────────────────────────────────────────────
-export default function Header() {
+export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, breadcrumbLabel = 'Videoatención' }) {
   const [menuOpen,  setMenuOpen]  = useState(false)  // mobile hamburger
   const [ayudaOpen, setAyudaOpen] = useState(false)  // desktop dropdown
   const [mobileAyudaOpen, setMobileAyudaOpen] = useState(false) // mobile sub
@@ -74,7 +74,9 @@ export default function Header() {
 
       {/* ── MOBILE bar ── */}
       <div className="xl:hidden bg-white flex items-center justify-between px-4 h-16 border-b border-[#dee2e6]">
-        <img src={A.logo} alt="Nueva Masvida" className="w-[140px] h-[40px] object-contain" />
+        <button onClick={onGoHome} className="focus-visible:outline-none">
+          <img src={A.logo} alt="Ir al inicio — Nueva Masvida" className="w-[140px] h-[40px] object-contain" />
+        </button>
         <div className="flex items-center gap-3">
           <button className="bg-[#ef9033] text-white text-xs font-semibold rounded-full px-3 py-1.5 hover:bg-[#d87f25] transition-colors whitespace-nowrap">
             Sucursal Virtual
@@ -114,7 +116,15 @@ export default function Header() {
         {/* Mobile sub-items */}
         <div className={`ayuda-sub ${mobileAyudaOpen ? 'ayuda-sub--open' : 'ayuda-sub--closed'}`}>
           {AYUDA_ITEMS.map(({ id, label, dotColor }) => (
-            <button key={id} className="ayuda-sub-item">
+            <button
+              key={id}
+              className="ayuda-sub-item"
+              onClick={() => {
+                setMenuOpen(false)
+                if (id === 'centro') onCentroDeAyuda?.()
+                if (id === 'video') onVideoAtencion?.()
+              }}
+            >
               <span className="ayuda-sub-item__dot" style={{ background: dotColor }} />
               {label}
             </button>
@@ -129,9 +139,9 @@ export default function Header() {
         {/* Top bar */}
         <div className="bg-white flex items-center justify-center py-4 h-[80px]">
           <div className="w-[1200px] flex items-center justify-between px-0">
-            <div className="w-[173px] h-[49px] flex-shrink-0">
-              <img src={A.logo} alt="Nueva Masvida" className="h-full w-full object-contain" />
-            </div>
+            <button onClick={onGoHome} className="w-[173px] h-[49px] flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0085ca] rounded">
+              <img src={A.logo} alt="Ir al inicio — Nueva Masvida" className="h-full w-full object-contain" />
+            </button>
             <div className="flex items-center gap-6">
               <div className="bg-[#f5f7fa] border border-[#ced4da] rounded-full w-[214px] flex items-center gap-2 px-4 py-2">
                 <img src={A.iconSearch} alt="" className="w-[18px] h-[18px] flex-shrink-0" />
@@ -181,7 +191,16 @@ export default function Header() {
 
                   {/* Items */}
                   {AYUDA_ITEMS.map(({ id, label, desc, bg, color, Icon }) => (
-                    <button key={id} className="ayuda-item" role="menuitem">
+                    <button
+                      key={id}
+                      className="ayuda-item"
+                      role="menuitem"
+                      onClick={() => {
+                        setAyudaOpen(false)
+                        if (id === 'centro') onCentroDeAyuda?.()
+                        if (id === 'video') onVideoAtencion?.()
+                      }}
+                    >
                       <div className="ayuda-item__icon" style={{ background: bg, color }}>
                         <Icon />
                       </div>
@@ -211,9 +230,11 @@ export default function Header() {
         {/* Breadcrumb */}
         <div className="bg-white border-b border-[#dee2e6] flex items-start justify-center h-[45px]">
           <div className="w-[1200px] flex items-center gap-2 pt-3">
-            <img src={A.iconHome} alt="Inicio" className="w-5 h-5 flex-shrink-0" />
+            <button onClick={onGoHome} className="text-[#495057] text-base hover:underline focus-visible:outline-none">
+              Inicio
+            </button>
             <img src={A.iconBreadChevron} alt=">" className="w-3.5 h-3.5 flex-shrink-0" />
-            <span className="text-[#495057] text-base">Videoatención</span>
+            <span className="text-[#495057] text-base">{breadcrumbLabel}</span>
           </div>
         </div>
 

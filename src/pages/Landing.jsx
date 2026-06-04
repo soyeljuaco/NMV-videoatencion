@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { A } from '../assets.js'
 import icoHero from '../icons/ico-hero.svg'
-import icoFeature1 from '../icons/ico-feature1.svg'
-import icoFeature2 from '../icons/ico-feature2.svg'
+import icoClockCheck from '../icons/ico-clock-check.svg'
+import icoComputerVideo from '../icons/ico-computer-video-call.svg'
 import icoBranchCard from '../icons/ico-branch-card.svg'
 import '../styles/interactions.css'
 
 const FEATURES = [
-  { icon: A.iconCompVideo,  title: 'Mayor accesibilidad', desc: 'Consulta desde cualquier lugar sin desplazarte' },
-  { icon: A.iconClockHeart, title: 'Ahorro de tiempo',    desc: 'Atención más eficiente, sin filas de espera' },
-  { icon: A.iconCalFav,     title: 'Agenda flexible',     desc: 'Agenda tus citas en el momento que más te acomode' },
-  { icon: A.iconSecurity,   title: 'Rápido y seguro',     desc: 'Plataforma confiable para tu atención' },
+  { icon: A.iconCompVideo,  title: 'Mayor accesibilidad', desc: 'Consulta desde cualquier lugar sin desplazarte',      barColor: '#0085ca', iconBg: 'rgba(0,133,202,0.12)'   },
+  { icon: A.iconClockHeart, title: 'Ahorro de tiempo',    desc: 'Atención más eficiente, sin filas de espera',        barColor: '#7e4ed7', iconBg: 'rgba(126,78,215,0.12)'  },
+  { icon: A.iconCalFav,     title: 'Agenda flexible',     desc: 'Agenda tus citas en el momento que más te acomode', barColor: '#ef9033', iconBg: 'rgba(239,144,51,0.12)'  },
+  { icon: A.iconSecurity,   title: 'Rápido y seguro',     desc: 'Plataforma confiable para tu atención',              barColor: '#25a337', iconBg: 'rgba(37,163,55,0.12)'   },
 ]
 const INTERVAL = 2500
 
@@ -44,7 +44,7 @@ export default function Landing({ onStart }) {
               <h1 className="font-raleway font-bold text-[36px] leading-[40px] xl:text-[72px] xl:leading-[76px] text-[#212529] m-0">videoatención</h1>
             </div>
             {/* Subtitle */}
-            <p className="text-[#495057] text-base xl:text-xl leading-relaxed w-full xl:w-[571px]">
+            <p className="text-[#495057] text-base xl:text-xl leading-6 xl:leading-relaxed w-full xl:w-[571px]">
               Atención personalizada desde donde quieras. Resuelve tus trámites sin salir de casa.
             </p>
             {/* CTA */}
@@ -56,12 +56,6 @@ export default function Landing({ onStart }) {
                 <img src={A.iconVideoBlue} alt="" className="w-6 h-6" />
                 Agendar videoatención
               </button>
-              <div className="flex items-center justify-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-[rgba(53,173,68,0.15)] flex items-center justify-center flex-shrink-0">
-                  <img src={A.iconCheckGreenSm} alt="" className="w-5 h-5" />
-                </div>
-                <span className="text-[#495057] text-sm">Confirmación inmediata</span>
-              </div>
             </div>
           </div>
 
@@ -104,14 +98,14 @@ export default function Landing({ onStart }) {
             aria-live="polite"
             onMouseLeave={() => setIsPaused(false)}
           >
-            {FEATURES.map(({ icon, title, desc }, i) => {
+            {FEATURES.map(({ icon, title, desc, barColor, iconBg }, i) => {
               const isActive = activeIndex === i
               return (
                 <div key={title} className="flex items-stretch gap-3">
 
                   {/* Barra de progreso vertical */}
                   <div className="progress-track">
-                    {isActive && <div key={i + '-' + activeIndex} className="progress-bar" />}
+                    {isActive && <div key={i + '-' + activeIndex} className="progress-bar" style={{ background: barColor }} />}
                   </div>
 
                   {/* Feature item */}
@@ -119,12 +113,12 @@ export default function Landing({ onStart }) {
                     className={`feature-item flex items-start gap-4 flex-1 ${isActive ? 'is-active' : 'is-dim'}`}
                     onMouseEnter={() => { setIsPaused(true); setActiveIndex(i) }}
                   >
-                    <div className="icon-container w-12 h-12 rounded-[14px] bg-[rgba(113,52,116,0.15)] flex items-center justify-center flex-shrink-0">
+                    <div className="icon-container w-12 h-12 rounded-[14px] flex items-center justify-center flex-shrink-0" style={{ background: iconBg }}>
                       <img src={icon} alt="" className="w-6 h-6" />
                     </div>
                     <div>
                       <p className="feature-title text-[#212529] font-semibold text-lg leading-7 tracking-tight">{title}</p>
-                      <p className="feature-desc text-[#495057] text-base leading-7">{desc}</p>
+                      <p className="feature-desc text-[#495057] text-base leading-6">{desc}</p>
                     </div>
                   </div>
 
@@ -160,28 +154,37 @@ export default function Landing({ onStart }) {
               />
               {/* Overlay oscuro sutil en hover */}
               <div className="bg-zoom-overlay absolute inset-0" />
-              {/* Decorativo D2 + Branch card — posición exacta Figma, desktop */}
-              <div className="hidden xl:flex absolute items-center gap-[44px]" style={{ left: '55px', bottom: '48px', zIndex: 2 }}>
-                <img src="/img-elementos-d2.png" alt="" aria-hidden="true" className="w-[72px] h-[77px] object-cover pointer-events-none flex-shrink-0" />
-                <img src={icoBranchCard} alt="Ejecutivo de sucursal" className="pointer-events-none flex-shrink-0" />
-              </div>
+              {/* Decorativo D2 — bottom-left */}
+              <img
+                src="/img-elementos-d2.png"
+                alt="" aria-hidden="true"
+                className="hidden xl:block absolute pointer-events-none"
+                style={{ left: '55px', bottom: '48px', width: '72px', height: '77px', objectFit: 'cover', zIndex: 2 }}
+              />
+              {/* Branch card — centro-derecha con bounce sutil */}
+              <img
+                src={icoBranchCard}
+                alt="Ejecutivo de sucursal"
+                className="hidden xl:block absolute pointer-events-none branch-card-float"
+                style={{ left: '48%', top: '65%', zIndex: 2 }}
+              />
             </div>
 
-            {/* Two feature cards */}
+            {/* Two feature cards — Figma 789:4479 */}
             <div className="flex flex-col xl:flex-row gap-4 xl:gap-6">
-              <div className="step-card bg-white border border-[#dee2e6] rounded-2xl flex-1 flex flex-col items-center gap-4 px-8 xl:px-[60px] py-6 text-center">
-                <img src={icoFeature1} alt="" className="step-icon w-10 h-10" />
-                <div className="flex flex-col gap-2">
-                  <p className="font-raleway font-bold text-xl text-[#212529] leading-7">Reserva tu hora en minutos</p>
-                  <p className="text-[#495057] text-base leading-5">Elige el día y el horario que mejor te acomoden para conversar con nuestros ejecutivos sin salir de casa.</p>
+              <div className="step-card bg-white border border-[#dee2e6] rounded-2xl flex-1 flex flex-col gap-4 px-8 xl:px-[60px] py-6">
+                <div className="flex items-center gap-4">
+                  <img src={icoClockCheck} alt="" className="w-9 h-9 flex-shrink-0" />
+                  <p className="font-raleway font-bold text-xl text-[#0085ca] leading-7">Reserva tu hora en minutos</p>
                 </div>
+                <p className="text-[#495057] text-base leading-6">Elige el día y el horario que mejor te acomoden para conversar con nuestros ejecutivos sin salir de casa.</p>
               </div>
-              <div className="step-card bg-white border border-[#dee2e6] rounded-2xl flex-1 flex flex-col items-center gap-4 px-8 xl:px-[60px] py-6 text-center">
-                <img src={icoFeature2} alt="" className="step-icon w-10 h-10" />
-                <div className="flex flex-col gap-2">
-                  <p className="font-raleway font-bold text-xl text-[#212529] leading-7">Conéctate a tu videoatención</p>
-                  <p className="text-[#495057] text-base leading-5">Cuando llegue el momento, accede de forma segura desde cualquier dispositivo y habla con nosotros cara a cara.</p>
+              <div className="step-card bg-white border border-[#dee2e6] rounded-2xl flex-1 flex flex-col gap-4 px-8 xl:px-[60px] py-6">
+                <div className="flex items-center gap-4">
+                  <img src={icoComputerVideo} alt="" className="w-9 h-9 flex-shrink-0" />
+                  <p className="font-raleway font-bold text-xl text-[#0085ca] leading-7">Conéctate a tu videoatención</p>
                 </div>
+                <p className="text-[#495057] text-base leading-6">Cuando llegue el momento, accede de forma segura desde cualquier dispositivo y habla con nosotros cara a cara.</p>
               </div>
             </div>
           </div>
@@ -210,7 +213,7 @@ export default function Landing({ onStart }) {
                 <span className="font-medium">Estamos cuando </span>
                 <span className="font-bold">nos necesitas</span>
               </h2>
-              <p className="text-white text-base xl:text-2xl leading-relaxed xl:leading-[34px]">
+              <p className="text-white text-base xl:text-2xl leading-6 xl:leading-[34px]">
                 Atendemos de lunes a sábado en horarios pensados para acompañar tu rutina, sin necesidad de ir a sucursal.
               </p>
             </div>

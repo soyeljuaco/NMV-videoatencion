@@ -14,7 +14,7 @@ function AccordionSection({ title, children }) {
         onClick={() => setOpen(v => !v)}
         className="xl:hidden flex items-center justify-between w-full py-4 px-4 text-left"
       >
-        <p className="text-[#212529] font-semibold text-base">{title}</p>
+        <p className="text-[#212529] font-semibold text-base leading-6">{title}</p>
         <span className={`text-[#495057] text-xl leading-none transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>›</span>
       </button>
       {/* Desktop title (always visible) */}
@@ -39,15 +39,15 @@ export default function Footer() {
         <div className="w-full xl:grid xl:grid-cols-4 xl:gap-6 xl:pb-12 xl:pt-8">
 
           <AccordionSection title="Nuestra empresa">
-            {col1.map(l => <p key={l} className="footer-link text-[#495057] font-medium text-base cursor-pointer">{l}</p>)}
+            {col1.map(l => <p key={l} className="footer-link text-[#495057] font-medium text-base leading-6 cursor-pointer">{l}</p>)}
           </AccordionSection>
 
           <AccordionSection title="Gestión de información">
-            {col2.map(l => <p key={l} className="footer-link text-[#495057] font-medium text-base cursor-pointer">{l}</p>)}
+            {col2.map(l => <p key={l} className="footer-link text-[#495057] font-medium text-base leading-6 cursor-pointer">{l}</p>)}
           </AccordionSection>
 
           <AccordionSection title="Contenidos relevantes">
-            {col3.map(l => <p key={l} className="footer-link text-[#495057] font-medium text-base cursor-pointer">{l}</p>)}
+            {col3.map(l => <p key={l} className="footer-link text-[#495057] font-medium text-base leading-6 cursor-pointer">{l}</p>)}
           </AccordionSection>
 
           {/* Contáctanos */}
@@ -56,13 +56,13 @@ export default function Footer() {
               <div className="w-10 h-10 rounded-2xl bg-[rgba(37,163,55,0.1)] flex items-center justify-center flex-shrink-0">
                 <img src={A.iconWhatsapp} alt="" className="w-6 h-6" />
               </div>
-              <p className="text-[#495057] text-base">Escríbenos al +569 6901 5876</p>
+              <p className="text-[#495057] text-base leading-6">Escríbenos al +569 6901 5876</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-[rgba(124,132,154,0.1)] flex items-center justify-center flex-shrink-0">
                 <img src={A.iconPhone} alt="" className="w-6 h-6" />
               </div>
-              <p className="text-[#495057] text-base">Llámanos al 600 6000 262</p>
+              <p className="text-[#495057] text-base leading-6">Llámanos al 600 6000 262</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-[rgba(239,144,51,0.1)] flex items-center justify-center flex-shrink-0">
@@ -86,7 +86,7 @@ export default function Footer() {
         <div className="w-[140px] xl:w-[173px] h-[40px] xl:h-[49px]">
           <img src={A.logoFooter} alt="Nueva Masvida" className="h-full w-full object-contain" />
         </div>
-        <p className="text-[#6c757d] font-medium text-sm xl:text-base text-center xl:text-right">
+        <p className="text-[#6c757d] font-medium text-sm xl:text-base text-center xl:text-right xl:leading-6">
           © Isapre Nueva Masvida 2026 – Todos los Derechos Reservados – Políticas de Privacidad
         </p>
       </div>

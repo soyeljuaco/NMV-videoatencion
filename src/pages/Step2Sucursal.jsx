@@ -30,7 +30,7 @@ export default function Step2Sucursal({ motivo, sucursal, onSelect, onNext, onBa
       {/* Heading */}
       <div className="flex flex-col gap-2.5">
         <h3 className="font-raleway font-bold text-2xl text-[#212529] tracking-tight">Elige tu Sucursal</h3>
-        <p className="text-[#495057] text-base">Selecciona la zona más cercana para asignarte un ejecutivo local.</p>
+        <p className="text-[#495057] text-base leading-6">Selecciona la zona más cercana para asignarte un ejecutivo local.</p>
       </div>
 
       {/* Zone cards 3-column */}

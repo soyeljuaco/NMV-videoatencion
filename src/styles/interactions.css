@@ -45,16 +45,11 @@
 ══════════════════════════════════════════════════════════ */
 
 .btn-sv {
-  transition: background-color 150ms ease-out,
-              transform 150ms ease-out,
-              box-shadow 150ms ease-out;
+  transition: background-color 180ms ease-out;
 }
 .btn-sv:hover {
-  background-color: #d4742a !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(239,144,51,0.3);
+  background-color: #dc7e2e !important;
 }
-.btn-sv:active { transform: translateY(0); box-shadow: none; transition-duration: 80ms; }
 
 
 /* ══════════════════════════════════════════════════════════
@@ -62,16 +57,11 @@
 ══════════════════════════════════════════════════════════ */
 
 .btn-cta-hero {
-  transition: background-color 150ms ease-out,
-              transform 150ms ease-out,
-              box-shadow 150ms ease-out;
+  transition: background-color 180ms ease-out;
 }
 .btn-cta-hero:hover {
-  background-color: #0069a3 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,133,202,0.35);
+  background-color: #0078b8 !important;
 }
-.btn-cta-hero:active { transform: translateY(0); box-shadow: none; transition-duration: 80ms; }
 
 
 /* ══════════════════════════════════════════════════════════
@@ -83,6 +73,20 @@
   transition: transform 800ms cubic-bezier(0.4,0,0.2,1);
 }
 .bg-zoom-wrap:hover .bg-photo { transform: scale(1.06); }
+
+/* Branch card — bounce sutil */
+@keyframes branch-bounce {
+  0%, 100% { transform: translateX(0px);  }
+  50%       { transform: translateX(6px); }
+}
+
+.branch-card-float {
+  animation: branch-bounce 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .branch-card-float { animation: none; }
+}
 
 .bg-zoom-overlay {
   background: rgba(0,0,0,0);
@@ -154,17 +158,15 @@
 ══════════════════════════════════════════════════════════ */
 
 .step-card {
-  transition: box-shadow 180ms cubic-bezier(0.4,0,0.2,1),
-              border-color 180ms cubic-bezier(0.4,0,0.2,1);
+  box-shadow:
+    rgba(71, 103, 136, 0.04) 0px 4px 5px 0px,
+    rgba(71, 103, 136, 0.03) 0px 8px 15px 0px,
+    rgba(71, 103, 136, 0.06) 0px 15px 30px 0px;
+  transition: border-color 0.22s ease;
 }
 .step-card:hover {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  border-color: #0085ca;
-  transition: box-shadow 220ms cubic-bezier(0.4,0,0.2,1),
-              border-color 220ms cubic-bezier(0.4,0,0.2,1);
+  border-color: #b3cde0;
 }
-.step-card .step-icon { transition: transform 220ms cubic-bezier(0.4,0,0.2,1); }
-.step-card:hover .step-icon { transform: scale(1.06); }
 
 
 /* ══════════════════════════════════════════════════════════
@@ -172,16 +174,11 @@
 ══════════════════════════════════════════════════════════ */
 
 .btn-cta-white {
-  transition: background-color 150ms ease-out,
-              transform 150ms ease-out,
-              box-shadow 150ms ease-out;
+  transition: background-color 180ms ease-out;
 }
 .btn-cta-white:hover {
-  background-color: rgba(255,255,255,0.90) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background-color: rgba(255,255,255,0.88) !important;
 }
-.btn-cta-white:active { transform: translateY(0); box-shadow: none; transition-duration: 80ms; }
 
 
 /* ══════════════════════════════════════════════════════════

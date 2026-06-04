@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Header from './components/Header.jsx'
 import HeaderLogueado from './components/HeaderLogueado.jsx'
 import Footer from './components/Footer.jsx'
@@ -10,6 +10,7 @@ import Step3Hora from './pages/Step3Hora.jsx'
 import Step4Confirm from './pages/Step4Confirm.jsx'
 import ConfirmFinal from './pages/ConfirmFinal.jsx'
 import MisCitas from './pages/SucursalVirtual/MisCitas/MisCitas.jsx'
+import CentroDeAyuda from './pages/CentroDeAyuda/CentroDeAyuda.jsx'
 import ModalRutValidacion from './dialogs/ModalRutValidacion.jsx'
 import ModalClaveSucursal from './dialogs/ModalClaveSucursal.jsx'
 import ModalNoAfiliado from './dialogs/ModalNoAfiliado.jsx'
@@ -35,14 +36,25 @@ function fetchNombreAfiliado(rut) {
   return NOMBRES[idx]
 }
 
+// ── URL ↔ page mapping ───────────────────────────────────────────────────────
+const PATH_MAP = { '/centro-de-ayuda': 'centroDeAyuda' }
+function pageFromPath(path) { return PATH_MAP[path] ?? 'landing' }
+
 export default function App() {
-  const [page, setPage]       = useState('landing') // 'landing' | 'wizard' | 'done' | 'misCitas'
+  const [page, setPage]       = useState(() => pageFromPath(window.location.pathname))
   const [step, setStep]       = useState(1)
   const [booking, setBooking] = useState(INITIAL)
   const [modal, setModal]     = useState(null) // null | 'rut' | 'clave' | 'noAfiliado' | 'paso1'
   const [rutIngresado, setRutIngresado] = useState('')
   const wizardRef     = useRef(null)
   const wizardCardRef = useRef(null) // apunta al card blanco del wizard
+
+  // Handle browser back/forward
+  useEffect(() => {
+    function onPop() { setPage(pageFromPath(window.location.pathname)) }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
 
   function scrollToWizard() {
     setTimeout(() => {
@@ -128,6 +140,7 @@ export default function App() {
     setBooking(INITIAL)
     setRutIngresado('')
     setModal(null)
+    window.history.pushState({}, '', '/')
   }
 
   // "Agendar otra cita" — vuelve al paso 1 sin cerrar sesión
@@ -141,6 +154,13 @@ export default function App() {
   // ── Mis Citas navigation ─────────────────────────────────
   function goToMisCitas() {
     setPage('misCitas')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  // ── Centro de Ayuda navigation ───────────────────────────
+  function goToCentroDeAyuda() {
+    setPage('centroDeAyuda')
+    window.history.pushState({}, '', '/centro-de-ayuda')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -191,12 +211,26 @@ export default function App() {
             onAgendar={agendarOtra}
           />
         )
-        : <Header />
+        : (
+          <Header
+            onGoHome={restart}
+            onCentroDeAyuda={goToCentroDeAyuda}
+            onVideoAtencion={restart}
+            breadcrumbLabel={page === 'centroDeAyuda' ? 'Centro de ayuda' : 'Videoatención'}
+          />
+        )
       }
 
       <main className="flex-1">
         {page === 'landing' && (
           <Landing onStart={openRutModal} />
+        )}
+
+        {page === 'centroDeAyuda' && (
+          <CentroDeAyuda
+            onAgendar={openRutModal}
+            onGoHome={restart}
+          />
         )}
 
         {page === 'misCitas' && (
@@ -214,7 +248,7 @@ export default function App() {
                     <h2 className="font-raleway font-bold text-[48px] text-[#212529] leading-tight">
                       Agenda tu videoatención
                     </h2>
-                    <p className="text-[#495057] text-base">
+                    <p className="text-[#495057] text-base leading-6">
                       Cuatro pasos rápidos. Elige cuándo te acomoda y nosotros confirmamos al instante.
                     </p>
                   </div>

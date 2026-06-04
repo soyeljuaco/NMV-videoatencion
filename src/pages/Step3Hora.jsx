@@ -249,7 +249,7 @@ function EmptyStateSlots({ date }) {
         </svg>
       </div>
       <div className="flex flex-col gap-1 text-center px-6">
-        <p className="text-[#212529] font-semibold text-base">Sin horarios disponibles</p>
+        <p className="text-[#212529] font-semibold text-base leading-6">Sin horarios disponibles</p>
         <p className="text-[#495057] text-sm leading-5">
           El día <strong>{formatDate(date)}</strong> no tiene horas disponibles.<br />
           Elige otro día en el calendario.
@@ -313,7 +313,7 @@ export default function Step3Hora({ motivo, sucursal, fecha, hora, onSelect, onN
       {/* Heading */}
       <div className="flex flex-col gap-2.5">
         <h3 className="font-raleway font-bold text-2xl text-[#212529]">Elige el día y la hora</h3>
-        <p className="text-[#495057] text-base">
+        <p className="text-[#495057] text-base leading-6">
           Lunes a Viernes 14:30 - 17:30 hrs · Sábados 09:00 - 13:30 hrs.
         </p>
       </div>

@@ -27,7 +27,7 @@ export default function AppointmentEmpty({ tab, onAgendar }) {
         <h3 className="font-raleway font-bold text-xl text-[#212529]">
           {isProximas ? 'No tienes videoatenciones próximas' : 'No tienes videoatenciones anteriores'}
         </h3>
-        <p className="text-[#6c757d] text-base whitespace-nowrap">
+        <p className="text-[#6c757d] text-base leading-6 whitespace-nowrap">
           {isProximas
             ? 'Agenda una videoatención y nos vemos pronto.'
             : 'Tus videoatenciones completadas y anuladas aparecerán aquí.'}

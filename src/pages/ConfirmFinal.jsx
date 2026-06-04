@@ -29,7 +29,7 @@ export default function ConfirmFinal({ motivo, sucursal, fecha, hora, email, onR
       {/* Heading */}
       <div className="flex flex-col gap-2.5 text-center">
         <h3 className="font-raleway font-bold text-2xl text-[#212529]">¡Cita confirmada!</h3>
-        <p className="text-[#495057] text-base">
+        <p className="text-[#495057] text-base leading-6">
           Te enviamos los datos de tu videoatención a{' '}
           <strong className="text-[#212529] font-semibold">{email}</strong>
         </p>

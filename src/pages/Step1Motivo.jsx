@@ -42,7 +42,7 @@ export default function Step1Motivo({ motivo, onSelect, onNext, onExit }) {
       {/* Heading */}
       <div className="flex flex-col gap-2.5">
         <h3 className="font-raleway font-bold text-2xl text-[#212529] tracking-tight">¿En qué te ayudamos hoy?</h3>
-        <p className="text-[#495057] text-base">Elige el motivo de tu videoatención para asignarte al ejecutivo adecuado.</p>
+        <p className="text-[#495057] text-base leading-6">Elige el motivo de tu videoatención para asignarte al ejecutivo adecuado.</p>
       </div>
 
       {/* Option grid 2×2 — CSS Grid iguala altos dentro de cada fila automáticamente */}

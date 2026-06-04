@@ -142,7 +142,7 @@ export default function RescheduleModal({ appointment, onConfirm, onCancel }) {
           <p className="text-[#6c757d] text-[11px] font-semibold uppercase tracking-wider">
             Videoatención actual
           </p>
-          <p className="text-[#212529] font-semibold text-base leading-snug">
+          <p className="text-[#212529] font-semibold text-base leading-6">
             {getMotivo(appointment.motivo)}
           </p>
           <p className="text-[#495057] text-sm">
