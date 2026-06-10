@@ -18,7 +18,6 @@ const OPTIONS = [
     icon: icoGes,
     title: 'GES/CAEC',
     desc:  'Activación, orientación e información',
-    tip:   true,
   },
   {
     id:   'presupuestos',
@@ -46,7 +45,7 @@ export default function Step1Motivo({ motivo, onSelect, onNext, onExit }) {
       </div>
 
       {/* Option grid 2×2 — CSS Grid iguala altos dentro de cada fila automáticamente */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 xl:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 xl:gap-6" style={{ gridAutoRows: '1fr' }}>
         {OPTIONS.map(({ id, icon, title, desc, tip }) => {
           const selected  = motivo === id
           const showTip   = selected && tip

@@ -58,17 +58,7 @@ export default function App() {
 
   function scrollToWizard() {
     setTimeout(() => {
-      if (window.innerWidth >= 1280) {
-        // Desktop: centra el foco en el card del wizard (stepper + paso)
-        const el = wizardCardRef.current
-        if (!el) return
-        const headerH = document.querySelector('header')?.offsetHeight ?? 177
-        const top = el.getBoundingClientRect().top + window.scrollY - headerH - 24
-        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
-      } else {
-        // Mobile: sube al inicio (el wizard ocupa toda la pantalla)
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 50)
   }
 
@@ -238,20 +228,14 @@ export default function App() {
         )}
 
         {(page === 'wizard' || page === 'done') && (
-          <section ref={wizardRef} className="bg-[#f5f7fa] xl:py-20 flex justify-center">
+          <section ref={wizardRef} className="bg-[#f5f7fa] xl:py-10 flex justify-center">
             <div className="w-full xl:w-[1200px] flex justify-center">
               <div className="w-full xl:w-[996px] flex flex-col xl:gap-12 items-center">
                 {/* Section header — desktop only */}
-                <div className="hidden xl:flex text-center w-full flex-col gap-4">
-                  <p className="text-[#7e4ed7] text-sm font-semibold uppercase tracking-wider">Nueva experiencia</p>
-                  <div className="flex flex-col gap-4">
-                    <h2 className="font-display font-bold text-[48px] text-[#212529] leading-tight">
-                      Agenda tu videoatención
-                    </h2>
-                    <p className="text-[#495057] text-base leading-6">
-                      Cuatro pasos rápidos. Elige cuándo te acomoda y nosotros confirmamos al instante.
-                    </p>
-                  </div>
+                <div className="hidden xl:flex justify-center w-full">
+                  <h2 className="font-display font-bold text-[36px] text-[#212529] leading-tight text-center">
+                    Agenda tu videoatención
+                  </h2>
                 </div>
 
                 {/* Wizard card — full-screen mobile, rounded desktop */}

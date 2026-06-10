@@ -28,7 +28,7 @@ let _store = [
     motivo:    'orientacion',
     sucursal:  'centro',
     ejecutivo: 'Valentina Muñoz',
-    fecha:     '2026-06-10',
+    fecha:     '2026-07-15',
     hora:      '14:30',
     videoUrl:  'https://meet.nuevamasvida.cl/apt-001',
     status:    'upcoming', // 'upcoming' | 'past' | 'cancelled'
