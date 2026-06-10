@@ -15,7 +15,7 @@ export default function ModalPaso1({ motivo, onGoSucursal, onContinue, onSalir }
         {/* Heading */}
         <div className="flex flex-col gap-2">
           <p className="text-[#7e4ed7] text-xs font-semibold uppercase tracking-wider">Tu gestión</p>
-          <h3 className="font-raleway font-bold text-2xl text-[#212529]">¿Cómo quieres continuar?</h3>
+          <h3 className="font-display font-bold text-2xl text-[#212529]">¿Cómo quieres continuar?</h3>
           <p className="text-[#495057] text-base leading-6">
             Para <strong className="text-[#212529]">{MOTIVO_LABELS[motivo] || 'tu gestión'}</strong>, puedes resolverla ahora mismo en nuestra Sucursal Virtual o agendar una videoatención con un ejecutivo.
           </p>
@@ -34,7 +34,7 @@ export default function ModalPaso1({ motivo, onGoSucursal, onContinue, onSalir }
               <img src={A.iconUserScreen} alt="" className="w-6 h-6" />
             </div>
             <div className="flex flex-col gap-1">
-              <p className="font-raleway font-bold text-base text-[#212529] leading-6">Sucursal Virtual</p>
+              <p className="font-display font-bold text-base text-[#212529] leading-6">Sucursal Virtual</p>
               <p className="text-[#495057] text-sm leading-5">
                 Resuelve tu trámite en línea de forma inmediata, sin esperar.
               </p>
@@ -59,7 +59,7 @@ export default function ModalPaso1({ motivo, onGoSucursal, onContinue, onSalir }
               />
             </div>
             <div className="flex flex-col gap-1">
-              <p className="font-raleway font-bold text-base text-[#212529] leading-6">Videoatención con ejecutivo</p>
+              <p className="font-display font-bold text-base text-[#212529] leading-6">Videoatención con ejecutivo</p>
               <p className="text-[#495057] text-sm leading-5">
                 Agenda una hora con un ejecutivo de Nueva Masvida para tu zona.
               </p>

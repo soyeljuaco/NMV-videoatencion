@@ -71,7 +71,7 @@ export default function MisCitas({ onAgendar }) {
           {/* ── Page header ── */}
           <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
             <div>
-              <h1 className="font-raleway font-bold text-2xl xl:text-[36px] text-[#212529] leading-tight">
+              <h1 className="font-display font-bold text-2xl xl:text-[36px] text-[#212529] leading-tight">
                 Mis videoatenciones
               </h1>
               <p className="text-[#6c757d] text-sm mt-1">

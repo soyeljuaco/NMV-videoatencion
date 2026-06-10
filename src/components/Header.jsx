@@ -143,7 +143,7 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
               <img src={A.logo} alt="Ir al inicio — Nueva Masvida" className="h-full w-full object-contain" />
             </button>
             <div className="flex items-center gap-6">
-              <div className="bg-[#f5f7fa] border border-[#ced4da] rounded-full w-[214px] flex items-center gap-2 px-4 py-2">
+              <div className="bg-[#f5f7fa] border border-[#dee2e6] rounded-full w-[214px] flex items-center gap-2 px-4 py-2">
                 <img src={A.iconSearch} alt="" className="w-[18px] h-[18px] flex-shrink-0" />
                 <span className="text-[#6c757d] text-sm">Buscar</span>
               </div>
@@ -225,7 +225,7 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
         {/* Breadcrumb */}
         <div className="bg-white border-b border-[#dee2e6] flex items-start justify-center h-[45px]">
           <div className="w-[1200px] flex items-center gap-2 pt-3">
-            <button onClick={onGoHome} className="text-[#495057] text-base hover:underline focus-visible:outline-none">
+            <button onClick={onGoHome} className="text-[#0085ca] text-base font-semibold hover:underline cursor-pointer transition-colors focus-visible:outline-none">
               Inicio
             </button>
             <img src={A.iconBreadChevron} alt=">" className="w-3.5 h-3.5 flex-shrink-0" />

@@ -82,7 +82,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright bar */}
-      <div className="border-t border-[#e0e0e0] flex flex-col xl:flex-row items-center justify-between gap-4 px-4 xl:px-8 py-6 xl:pb-8 xl:pt-12">
+      <div className="border-t border-[#dee2e6] flex flex-col xl:flex-row items-center justify-between gap-4 px-4 xl:px-8 py-6 xl:pb-8 xl:pt-12">
         <div className="w-[140px] xl:w-[173px] h-[40px] xl:h-[49px]">
           <img src={A.logoFooter} alt="Nueva Masvida" className="h-full w-full object-contain" />
         </div>

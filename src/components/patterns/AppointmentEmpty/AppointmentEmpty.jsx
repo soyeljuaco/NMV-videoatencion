@@ -24,7 +24,7 @@ export default function AppointmentEmpty({ tab, onAgendar }) {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="font-raleway font-bold text-xl text-[#212529]">
+        <h3 className="font-display font-bold text-xl text-[#212529]">
           {isProximas ? 'No tienes videoatenciones próximas' : 'No tienes videoatenciones anteriores'}
         </h3>
         <p className="text-[#6c757d] text-base leading-6 whitespace-nowrap">

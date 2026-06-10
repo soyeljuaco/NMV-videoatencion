@@ -32,7 +32,7 @@ export default function CancelModal({ appointment, onConfirm, onCancel, loading 
 
         {/* Texto */}
         <div className="flex flex-col gap-2">
-          <h2 className="font-raleway font-bold text-xl text-[#212529]">
+          <h2 className="font-display font-bold text-xl text-[#212529]">
             ¿Anular esta cita?
           </h2>
           <p className="text-[#495057] text-sm leading-6">

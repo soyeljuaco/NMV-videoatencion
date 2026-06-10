@@ -245,7 +245,7 @@ export default function App() {
                 <div className="hidden xl:flex text-center w-full flex-col gap-4">
                   <p className="text-[#7e4ed7] text-sm font-semibold uppercase tracking-wider">Nueva experiencia</p>
                   <div className="flex flex-col gap-4">
-                    <h2 className="font-raleway font-bold text-[48px] text-[#212529] leading-tight">
+                    <h2 className="font-display font-bold text-[48px] text-[#212529] leading-tight">
                       Agenda tu videoatención
                     </h2>
                     <p className="text-[#495057] text-base leading-6">
@@ -255,7 +255,7 @@ export default function App() {
                 </div>
 
                 {/* Wizard card — full-screen mobile, rounded desktop */}
-                <div ref={wizardCardRef} className="bg-white xl:border xl:border-[#d8e7f0] xl:rounded-[32px] xl:shadow-wizard w-full min-h-[calc(100dvh-64px)] xl:min-h-0 overflow-hidden">
+                <div ref={wizardCardRef} className="bg-white xl:border xl:border-[#dee2e6] xl:rounded-[32px] xl:shadow-wizard w-full min-h-[calc(100dvh-64px)] xl:min-h-0 overflow-hidden">
                   <WizardStepper current={stepperCurrent} />
 
                   {page === 'wizard' && step === 1 && (

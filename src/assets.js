@@ -70,4 +70,33 @@ export const A = {
   // Kept for compatibility (arrow right ≈ chevron right)
   iconArrowRight:     I('icon-chevron-right.svg'),
   iconShieldCheck:    I('icon-check-green-sm.svg'),
+
+  // Centro de Ayuda — category icons
+  helpHealth:         I('ico-help-health.png'),
+  helpBillCheck:      I('ico-help-bill-check.png'),
+  helpSecurity:       I('ico-help-security.png'),
+  helpLicense:        I('ico-help-license.png'),
+  helpDoctor:         I('ico-help-doctor.png'),
+  helpDoc:            I('ico-help-doc.png'),
+  helpBriefcase:      I('ico-help-briefcase.png'),
+  helpGift:           I('ico-help-gift.png'),
+
+  // Centro de Ayuda — contact channel icons
+  contactWhatsapp:    I('ico-contact-whatsapp.png'),
+  contactPhone:       I('ico-contact-phone.png'),
+  contactVideo:       I('ico-contact-video.png'),
+  contactBranch:      I('ico-contact-branch.png'),
+
+  // Centro de Ayuda — category images (stored in /public/img/help/)
+  catPlanSalud:       '/img/help/cat-plan-salud.jpg',
+  catBonos:           '/img/help/cat-bonos.jpg',
+  catGes:             '/img/help/cat-ges.jpg',
+  catLicencias:       '/img/help/cat-licencias.jpg',
+  catUrgencias:       '/img/help/cat-urgencias.jpg',
+  catPresupuestos:    '/img/help/cat-presupuestos.jpg',
+  catIndependientes:  '/img/help/cat-independientes.jpg',
+  catBeneficios:      '/img/help/cat-beneficios.jpg',
+
+  // Centro de Ayuda — decorative elements
+  decoD2:             '/img/help/deco-d2.png',
 };

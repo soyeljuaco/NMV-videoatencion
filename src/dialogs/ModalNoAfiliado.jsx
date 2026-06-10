@@ -12,7 +12,7 @@ export default function ModalNoAfiliado({ rut, onTryOther, onClose }) {
 
         {/* Heading */}
         <div className="flex flex-col gap-2 w-full text-center">
-          <h3 className="font-raleway font-bold text-xl text-[#212529]">RUT no encontrado</h3>
+          <h3 className="font-display font-bold text-xl text-[#212529]">RUT no encontrado</h3>
           <p className="text-[#495057] text-base leading-6">
             El RUT <strong className="text-[#212529] font-semibold">{rut}</strong> no está registrado como afiliado de Nueva Masvida. Las videoatenciones son un beneficio exclusivo para nuestros afiliados.
           </p>

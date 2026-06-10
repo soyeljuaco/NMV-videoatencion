@@ -61,7 +61,7 @@ export default function ModalRutValidacion({ onValid, onInvalid, onCancel }) {
 
         {/* Heading */}
         <div className="flex flex-col gap-2 w-full text-center">
-          <h3 className="font-raleway font-bold text-xl text-[#212529]">Validemos tu identidad</h3>
+          <h3 className="font-display font-bold text-xl text-[#212529]">Validemos tu identidad</h3>
           <p className="text-[#495057] text-base leading-6">
             Ingresa tu RUT para verificar tu afiliación a Nueva Masvida antes de agendar.
           </p>

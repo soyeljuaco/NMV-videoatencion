@@ -123,7 +123,7 @@ export default function RescheduleModal({ appointment, onConfirm, onCancel }) {
 
         {/* ── Encabezado ── */}
         <div className="flex items-center justify-between">
-          <h2 className="font-raleway font-bold text-xl text-[#212529]">
+          <h2 className="font-display font-bold text-xl text-[#212529]">
             Reagendar videoatención
           </h2>
           <button

@@ -41,7 +41,7 @@ export default function Step1Motivo({ motivo, onSelect, onNext, onExit }) {
 
       {/* Heading */}
       <div className="flex flex-col gap-2.5">
-        <h3 className="font-raleway font-bold text-2xl text-[#212529] tracking-tight">¿En qué te ayudamos hoy?</h3>
+        <h3 className="font-display font-bold text-2xl text-[#212529] tracking-tight">¿En qué te ayudamos hoy?</h3>
         <p className="text-[#495057] text-base leading-6">Elige el motivo de tu videoatención para asignarte al ejecutivo adecuado.</p>
       </div>
 
@@ -68,7 +68,7 @@ export default function Step1Motivo({ motivo, onSelect, onNext, onExit }) {
 
                   {/* Título + descripción */}
                   <div className="flex flex-col gap-1 min-w-0">
-                    <p className="font-raleway font-bold text-base text-[#212529] leading-6">{title}</p>
+                    <p className="font-display font-bold text-base text-[#212529] leading-6">{title}</p>
                     <p className="text-[#495057] text-sm leading-[1.45]">{desc}</p>
                   </div>
                 </div>
@@ -85,7 +85,7 @@ export default function Step1Motivo({ motivo, onSelect, onNext, onExit }) {
 
               {/* ── Tip inline Sucursal Virtual ── */}
               {showTip && (
-                <div className="mt-4 pt-4 border-t border-[rgba(126,78,215,0.15)] flex items-start gap-2.5">
+                <div className="mt-4 pt-4 border-t border-[#dee2e6] flex items-start gap-2.5">
                   {/* Ícono chispa */}
                   <svg className="flex-shrink-0 mt-0.5" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13 2L4.5 13.5H12L11 22L19.5 10.5H12L13 2Z" stroke="#7e4ed7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>

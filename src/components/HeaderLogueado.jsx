@@ -5,7 +5,7 @@
  * Props:
  *   nombre          string   — nombre del afiliado (no se muestra, reservado para accesibilidad)
  *   activePage      string   — 'wizard' | 'done' | 'misCitas'
- *   onGoHome        fn       — vuelve a la landing (logo + ícono casa)
+ *   onGoHome        fn       — vuelve a la landing (logo + link "Inicio")
  *   onCerrarSesion  fn       — cierra sesión y vuelve a la landing
  *   onMisCitas      fn       — navega a Mis videoatenciones
  *   onAgendar       fn       — navega al wizard (ya logueado)
@@ -91,13 +91,13 @@ export default function HeaderLogueado({
       <div className="bg-white border-b border-[#dee2e6] h-auto xl:h-[45px] flex items-center px-4 xl:px-10">
         <nav className="w-full max-w-full xl:max-w-[1200px] mx-auto flex items-center gap-2 py-2 xl:py-0">
 
-          {/* Ícono casa — clic va al home */}
+          {/* Inicio — clic va al home */}
           <button
             onClick={onGoHome}
             aria-label="Ir al inicio"
-            className="flex items-center hover:opacity-70 transition-opacity"
+            className="text-[#0085ca] text-xs xl:text-sm font-semibold leading-none hover:underline cursor-pointer transition-colors"
           >
-            <img src={A.iconBreadHome} alt="Inicio" className="w-4 h-4 flex-shrink-0 opacity-60" />
+            Inicio
           </button>
 
           <img src={A.iconBreadChevronSV} alt="" className="w-3 h-3 flex-shrink-0 opacity-40" />

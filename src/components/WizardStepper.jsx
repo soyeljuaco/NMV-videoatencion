@@ -15,7 +15,7 @@ export default function WizardStepper({ current }) {
       <div className="xl:hidden flex items-center justify-between px-5 py-4">
         <div className="flex items-center gap-2 min-w-0">
           <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${isDone ? 'bg-[#25a337]' : 'bg-[#0085ca]'}`}>
-            <span className="font-raleway font-bold text-xs text-white">{isDone ? '✓' : current}</span>
+            <span className="font-display font-bold text-xs text-white">{isDone ? '✓' : current}</span>
           </div>
           <span className="text-[#212529] font-semibold text-sm whitespace-nowrap">
             {isDone ? 'Completado' : `Paso ${current} de 4`}
@@ -49,7 +49,7 @@ export default function WizardStepper({ current }) {
           return (
             <div key={s.n} className="flex items-center gap-2">
               <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 relative ${done ? 'bg-[#25a337]' : ''} ${active ? 'bg-[#0085ca] shadow-step' : ''} ${pending ? 'bg-white border border-[#dee2e6]' : ''}`}>
-                <span className={`font-raleway font-bold text-sm leading-none ${done || active ? 'text-white' : 'text-[#495057]'}`}>{s.n}</span>
+                <span className={`font-display font-bold text-sm leading-none ${done || active ? 'text-white' : 'text-[#495057]'}`}>{s.n}</span>
               </div>
               <span className={`text-sm font-semibold whitespace-nowrap ${active ? 'text-[#212529]' : 'text-[#495057]'}`}>{s.label}</span>
               {!isLast && <div className={`h-px w-16 ${done ? 'bg-[#25a337]' : 'bg-[#dee2e6]'}`} />}

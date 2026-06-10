@@ -59,7 +59,7 @@ export const color = {
   // ── Bordes ───────────────────────────────────
   borderDefault:    '#dee2e6',   // Bordes generales, separadores
   borderInput:      '#ced4da',   // Bordes de inputs
-  borderWizard:     '#d8e7f0',   // Borde del card wizard principal
+  borderWizard:     '#dee2e6',   // Borde del card wizard principal
   borderHr:         '#e0e0e0',   // Línea divisoria footer wizard
   borderPrimary:    '#0085ca',   // Borde elemento activo/seleccionado
   borderTag:        'rgba(0,133,202,0.3)',  // Borde wizard-tag

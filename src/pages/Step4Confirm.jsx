@@ -97,7 +97,7 @@ export default function Step4Confirm({
 
       {/* Heading */}
       <div className="flex flex-col gap-2.5">
-        <h3 className="font-raleway font-bold text-2xl text-[#212529]">Confirma tus datos</h3>
+        <h3 className="font-display font-bold text-2xl text-[#212529]">Confirma tus datos</h3>
         <p className="text-[#495057] text-base leading-6">Revisaremos esta información para validar tu identidad antes de la videoatención</p>
       </div>
 

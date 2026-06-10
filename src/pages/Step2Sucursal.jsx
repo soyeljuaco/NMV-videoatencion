@@ -29,7 +29,7 @@ export default function Step2Sucursal({ motivo, sucursal, onSelect, onNext, onBa
 
       {/* Heading */}
       <div className="flex flex-col gap-2.5">
-        <h3 className="font-raleway font-bold text-2xl text-[#212529] tracking-tight">Elige tu Sucursal</h3>
+        <h3 className="font-display font-bold text-2xl text-[#212529] tracking-tight">Elige tu Sucursal</h3>
         <p className="text-[#495057] text-base leading-6">Selecciona la zona más cercana para asignarte un ejecutivo local.</p>
       </div>
 
@@ -58,7 +58,7 @@ export default function Step2Sucursal({ motivo, sucursal, onSelect, onNext, onBa
               </div>
               {/* Text */}
               <div className="flex flex-col gap-1 mt-4">
-                <p className="font-raleway font-bold text-base text-[#212529] leading-6">{label}</p>
+                <p className="font-display font-bold text-base text-[#212529] leading-6">{label}</p>
                 <p className="text-[#495057] text-sm leading-5">{cities}</p>
               </div>
             </button>

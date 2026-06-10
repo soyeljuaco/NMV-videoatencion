@@ -24,7 +24,7 @@ export default function ModalClaveSucursal({ onSuccess, onCancel }) {
 
         {/* Heading */}
         <div className="flex flex-col gap-2 w-full text-center">
-          <h3 className="font-raleway font-bold text-xl text-[#212529]">Ingresa tu clave de Sucursal Virtual</h3>
+          <h3 className="font-display font-bold text-xl text-[#212529]">Ingresa tu clave de Sucursal Virtual</h3>
           <p className="text-[#495057] text-base leading-6">
             Usa la misma clave que utilizas para ingresar en la Sucursal Virtual de Nueva Masvida.
           </p>

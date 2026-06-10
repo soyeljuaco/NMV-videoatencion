@@ -312,7 +312,7 @@ export default function Step3Hora({ motivo, sucursal, fecha, hora, onSelect, onN
 
       {/* Heading */}
       <div className="flex flex-col gap-2.5">
-        <h3 className="font-raleway font-bold text-2xl text-[#212529]">Elige el día y la hora</h3>
+        <h3 className="font-display font-bold text-2xl text-[#212529]">Elige el día y la hora</h3>
         <p className="text-[#495057] text-base leading-6">
           Lunes a Viernes 14:30 - 17:30 hrs · Sábados 09:00 - 13:30 hrs.
         </p>
