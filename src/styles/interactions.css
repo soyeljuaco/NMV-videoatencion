@@ -23,21 +23,13 @@
 
 .nav-link {
   position: relative;
-  opacity: 1;
-  transition: opacity 150ms ease-out;
+  border-radius: 9999px;
+  padding: 4px 10px;
+  transition: background-color 180ms ease-out;
 }
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: white;
-  transition: width 200ms ease-out;
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
-.nav-link:hover { opacity: 0.80; }
-.nav-link:hover::after { width: 100%; }
 
 
 /* ══════════════════════════════════════════════════════════

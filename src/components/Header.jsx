@@ -186,11 +186,10 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
                   {/* Panel header */}
                   <div className="ayuda-head">
                     <p className="ayuda-head__title">¿En qué podemos ayudarte?</p>
-                    <p className="ayuda-head__sub">Selecciona una opción para continuar</p>
                   </div>
 
                   {/* Items */}
-                  {AYUDA_ITEMS.map(({ id, label, desc, bg, color, Icon }) => (
+                  {AYUDA_ITEMS.map(({ id, label, Icon }) => (
                     <button
                       key={id}
                       className="ayuda-item"
@@ -201,15 +200,11 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
                         if (id === 'video') onVideoAtencion?.()
                       }}
                     >
-                      <div className="ayuda-item__icon" style={{ background: bg, color }}>
+                      <div className="ayuda-item__icon">
                         <Icon />
                       </div>
                       <div className="ayuda-item__text">
                         <span className="ayuda-item__label">{label}</span>
-                        <span className="ayuda-item__desc">{desc}</span>
-                      </div>
-                      <div className="ayuda-item__arrow">
-                        <ArrowIcon />
                       </div>
                     </button>
                   ))}
@@ -254,7 +249,7 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
 
 function CentroIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <circle cx="10" cy="10" r="8.25" stroke="currentColor" strokeWidth="1.6"/>
       <path d="M7.8 7.9a2.25 2.25 0 0 1 4.4.65c0 1.55-2.2 1.95-2.2 3.35" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
       <circle cx="10" cy="14.2" r="0.85" fill="currentColor"/>
@@ -264,7 +259,7 @@ function CentroIcon() {
 
 function ContactoIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path d="M17 12.5A1.5 1.5 0 0 1 15.5 14H5.5L2 17.5V4.5A1.5 1.5 0 0 1 3.5 3h12A1.5 1.5 0 0 1 17 4.5v8Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
       <path d="M5.5 7.5h9M5.5 10.5h6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
     </svg>
@@ -273,7 +268,7 @@ function ContactoIcon() {
 
 function VideoIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <rect x="1.5" y="5.5" width="11" height="9" rx="2" stroke="currentColor" strokeWidth="1.6"/>
       <path d="M12.5 9.2 18 6v8l-5.5-3.2V9.2Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
     </svg>
