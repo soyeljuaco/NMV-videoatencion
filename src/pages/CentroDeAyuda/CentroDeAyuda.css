@@ -60,8 +60,8 @@
   z-index: 20;
 }
 
-/* DS: gap sp-2 (8px) entre eyebrow+title, luego sp-6 (24px) hacia la search bar
-   Figma 927:4 gap-[8px] entre eyebrow y title, 927:3 gap-[24px] general */
+/* DS: gap sp-2 (8px) entre eyebrow+title, luego sp-8 (32px) hacia la search bar
+   Figma 927:4 gap-[8px] entre eyebrow y title, 927:3 gap-[32px] general */
 .cda-hero__inner {
   width: 100%;
   max-width: 894px;
@@ -69,7 +69,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 24px; /* sp-6 entre los bloques principales */
+  gap: 32px; /* sp-8 entre los bloques principales */
 }
 
 /* Eyebrow + title agrupados con gap 8px (sp-2) */
@@ -255,15 +255,16 @@
 .cda-search__tag--active { background: #0085ca; border-color: #0085ca; color: #ffffff; }
 .cda-search__tag--active:hover { background: #0069a3; border-color: #0069a3; }
 
-/* DS: ícono 24×24 dentro del tag — Figma 980:1777 size-[24px] */
+/* DS: ícono 24×24 dentro del tag — Figma 980:1777 size-[24px]
+   Default state: brand/primary (#0085CA) via CSS filter */
 .cda-search__tag-icon {
   width: 24px;
   height: 24px;
   object-fit: contain;
   flex-shrink: 0;
-  opacity: 0.75;
+  filter: brightness(0) saturate(100%) invert(35%) sepia(94%) saturate(578%) hue-rotate(167deg) brightness(102%) contrast(104%); /* → #0085CA */
 }
-.cda-search__tag--active .cda-search__tag-icon { opacity: 1; filter: brightness(0) invert(1); }
+.cda-search__tag--active .cda-search__tag-icon { filter: brightness(0) invert(1); } /* → #FFFFFF */
 
 /* ══ CATEGORIES ══════════════════════════════════════════════════════════
    DS: bg surface/default, inner max-w 1200px   Figma: 934:50 */
@@ -386,10 +387,12 @@
   transition: background 0.2s ease;
 }
 
+/* DS: brand/primary (#0085CA) via CSS filter — mismo color que surface/icon-blue bg */
 .cda-cat__badge-icon {
   width: 24px;
   height: 24px;
   object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(35%) sepia(94%) saturate(578%) hue-rotate(167deg) brightness(102%) contrast(104%); /* → #0085CA */
 }
 
 /* DS: Inter SemiBold 18px, text/primary — Figma 934:67 */
@@ -501,12 +504,13 @@
 }
 .cda-contact__title strong { font-weight: 700; } /* Raleway Bold */
 
-/* Contact cards grid — DS: 2-col grid, gap sp-6 — Figma 937:232/233/250 */
+/* Contact cards grid — DS: 2-col grid, gap sp-6, max-width 680px — Figma 937:232/233/250 */
 .cda-contact__cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px; /* sp-6 */
   flex-shrink: 0;
+  max-width: 680px;
 }
 
 @media (max-width: 559px) {
@@ -525,11 +529,7 @@
   padding: 24px; /* sp-6 */
   cursor: pointer;
   text-align: left;
-  transition:
-    transform  0.24s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.24s ease;
 }
-.cda-ccard:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
 
 /* DS: surface/icon-blue badge 40×40, radius 14px — Figma 937:236 */
 .cda-ccard__icon-wrap {
@@ -543,7 +543,13 @@
   flex-shrink: 0;
 }
 
-.cda-ccard__icon { width: 24px; height: 24px; object-fit: contain; }
+/* DS: brand/primary (#0085CA) via CSS filter */
+.cda-ccard__icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(35%) sepia(94%) saturate(578%) hue-rotate(167deg) brightness(102%) contrast(104%); /* → #0085CA */
+}
 
 /* DS: Inter Semi Bold 16px, text/primary — Figma 937:239 */
 .cda-ccard__title {
@@ -571,9 +577,7 @@
   font-weight: 600;
   color: #0085ca; /* text/brand */
   line-height: 24px;
-  transition: gap 0.18s ease;
 }
-.cda-ccard:hover .cda-ccard__cta { letter-spacing: 0.5px; }
 
 /* ══ SEARCH RESULTS PANEL ════════════════════════════════════════════════
    DS: surface/default, border/selected top border, radius bottom      */
