@@ -336,87 +336,35 @@
   border-right: 1px solid #dee2e6; /* border/default */
   border-bottom: 1px solid #dee2e6;
   position: relative;
-  z-index: 1;
-
-  /* ── Hover: Floating Card — spring animation ── */
-  transition:
-    transform   0.32s cubic-bezier(0.34, 1.56, 0.64, 1), /* spring: overshoot sutil */
-    box-shadow  0.32s cubic-bezier(0.16, 1,    0.3,  1),
-    background  0.18s ease,
-    border-color 0.18s ease,
-    border-radius 0.18s ease;
 }
 
-/* Divisores: quitar borde derecho en última columna */
-.cda-cat:nth-child(4n)     { border-right: none; }
-/* Quitar borde inferior en las últimas 4 cards (fila 2) */
-.cda-cat:nth-child(n+5)    { border-bottom: none; }
+/* Divisores: quitar borde derecho en última columna (4 cols desktop) */
+.cda-cat:nth-child(4n)  { border-right: none; }
+/* Quitar borde inferior en última fila (cards 5–8) */
+.cda-cat:nth-child(n+5) { border-bottom: none; }
 
 /* Mobile 2 cols: reajustar divisores */
 @media (max-width: 1023px) {
-  .cda-cat:nth-child(4n)    { border-right: 1px solid #dee2e6; } /* reset */
-  .cda-cat:nth-child(2n)    { border-right: none; }              /* 2ª col: sin borde */
-  .cda-cat:nth-child(n+5)   { border-bottom: 1px solid #dee2e6; } /* reset */
-  .cda-cat:nth-child(n+7)   { border-bottom: none; }              /* últimas 2 filas */
+  .cda-cat:nth-child(4n)  { border-right: 1px solid #dee2e6; }
+  .cda-cat:nth-child(2n)  { border-right: none; }
+  .cda-cat:nth-child(n+5) { border-bottom: 1px solid #dee2e6; }
+  .cda-cat:nth-child(n+7) { border-bottom: none; }
 }
 
-/* ── Hover: Floating Card ─────────────────────────────────────────────
-   La tarjeta se eleva sobre las vecinas: scale + translateY + sombra azulada
-   z-index: 10 la coloca encima de toda la grilla               */
-
-.cda-cat:hover {
-  transform: scale(1.05) translateY(-6px);
-  z-index: 10;
-  background: #ffffff;
-  border-radius: 16px; /* radius/xl — la card "se independiza" del grid */
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  /* Sombra con tinte brand/primary para reforzar la identidad */
-  box-shadow:
-    0 24px 48px rgba(0, 133, 202, 0.16),
-    0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-/* ── Línea azul superior — emerge del centro hacia los bordes en hover ── */
+/* ── Línea azul superior en hover — igual al diseño Figma ── */
 .cda-cat::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 80%;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 133, 202, 0) 0%,
-    #0085ca 30%,
-    #0085ca 70%,
-    rgba(0, 133, 202, 0) 100%
-  );
-  border-radius: 0 0 3px 3px;
-  transform: translateX(-50%) scaleX(0);
-  transform-origin: center;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #0085ca; /* brand/primary */
   opacity: 0;
-  transition:
-    transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
-    opacity   0.2s ease;
+  transition: opacity 0.18s ease;
 }
 
-.cda-cat:hover::before {
-  transform: translateX(-50%) scaleX(1);
-  opacity: 1;
-}
-
-/* ── Badge: cambio sutil en hover (refuerza el foco) ── */
-.cda-cat:hover .cda-cat__badge {
-  background: rgba(0, 133, 202, 0.18); /* ligeramente más intenso */
-  transition: background 0.2s ease;
-}
-
-/* ── Título: vira a brand/primary en hover ── */
-.cda-cat:hover .cda-cat__title {
-  color: #0085ca; /* text/brand */
-  transition: color 0.2s ease;
-}
+.cda-cat:hover::before { opacity: 1; }
 
 /* Icon badge + title row */
 .cda-cat__head-row {

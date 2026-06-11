@@ -71,21 +71,21 @@ export const A = {
   iconArrowRight:     I('icon-chevron-right.svg'),
   iconShieldCheck:    I('icon-check-green-sm.svg'),
 
-  // Centro de Ayuda — category icons
-  helpHealth:         I('ico-help-health.png'),
-  helpBillCheck:      I('ico-help-bill-check.png'),
-  helpSecurity:       I('ico-help-security.png'),
-  helpLicense:        I('ico-help-license.png'),
-  helpDoctor:         I('ico-help-doctor.png'),
-  helpDoc:            I('ico-help-doc.png'),
-  helpBriefcase:      I('ico-help-briefcase.png'),
-  helpGift:           I('ico-help-gift.png'),
+  // Centro de Ayuda — category icons (SVG)
+  helpHealth:         I('ico-help-health.svg'),
+  helpBillCheck:      I('ico-help-bill-check.svg'),
+  helpSecurity:       I('ico-help-security.svg'),
+  helpLicense:        I('ico-help-license.svg'),
+  helpDoctor:         I('ico-help-doctor.svg'),
+  helpDoc:            I('ico-help-doc.svg'),
+  helpBriefcase:      I('ico-help-briefcase.svg'),
+  helpGift:           I('ico-help-gift.svg'),
 
-  // Centro de Ayuda — contact channel icons
-  contactWhatsapp:    I('ico-contact-whatsapp.png'),
-  contactPhone:       I('ico-contact-phone.png'),
-  contactVideo:       I('ico-contact-video.png'),
-  contactBranch:      I('ico-contact-branch.png'),
+  // Centro de Ayuda — contact channel icons (SVG)
+  contactWhatsapp:    I('ico-contact-whatsapp.svg'),
+  contactPhone:       I('ico-contact-phone.svg'),
+  contactVideo:       I('ico-contact-video.svg'),
+  contactBranch:      I('ico-contact-branch.svg'),
 
   // Centro de Ayuda — category images (stored in /public/img/help/)
   catPlanSalud:       '/img/help/cat-plan-salud.jpg',
