@@ -253,7 +253,7 @@
 }
 .cda-search__tag:hover { background: #e6f4fb; border-color: #0085ca; color: #0069a3; }
 .cda-search__tag--active { background: #0085ca; border-color: #0085ca; color: #ffffff; }
-.cda-search__tag--active:hover { background: #0069a3; border-color: #0069a3; }
+.cda-search__tag--active:hover { background: #0069a3; border-color: #0069a3; color: #ffffff; }
 
 /* DS: ícono 24×24 dentro del tag — Figma 980:1777 size-[24px]
    Default state: brand/primary (#0085CA) via CSS filter */
@@ -276,7 +276,7 @@
 
 .cda-cats__inner { max-width: 1200px; margin: 0 auto; }
 
-.cda-cats__head { text-align: center; margin-bottom: 48px; } /* sp-8 */
+.cda-cats__head { text-align: left; margin-bottom: 48px; } /* sp-8 */
 
 /* DS: font/display Raleway, heading/xl (36px→48px clamp), font-weight 500
    Figma 937:214 — medium weight for base text */
@@ -287,7 +287,7 @@
   color: #212529; /* text/primary */
   margin: 0 0 8px; /* sp-2 */
   line-height: 1.25;
-  text-align: center;
+  text-align: left;
 }
 
 /* DS: bold portion → font-weight 700 (Figma Raleway:Bold) */
@@ -299,7 +299,7 @@
   line-height: 28px;
   color: #495057; /* text/secondary */
   margin: 0;
-  text-align: center;
+  text-align: left;
 }
 
 /* ── Grid — un gran card contenedor con divisores internos
@@ -417,7 +417,7 @@
 
 .cda-faq__inner { max-width: 782px; margin: 0 auto; }
 
-.cda-faq__head { text-align: center; margin-bottom: 48px; } /* sp-8 */
+.cda-faq__head { text-align: left; margin-bottom: 48px; } /* sp-8 */
 
 /* DS: font/display Bold, heading/xl 36px/52px, text/primary — Figma 937:182 */
 .cda-faq__title {
@@ -641,8 +641,14 @@
   justify-content: center;
   flex-shrink: 0;
 }
-.cda-results__item-badge img { width: 20px; height: 20px; object-fit: contain; }
-.cda-results__item-badge--faq { background: rgba(0,133,202,0.10); color: #0085ca; }
+/* DS: icono brand/primary, sin fondo */
+.cda-results__item-badge img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(35%) sepia(94%) saturate(578%) hue-rotate(167deg) brightness(102%) contrast(104%); /* → #0085CA */
+}
+.cda-results__item-badge--faq { color: #0085ca; } /* inline SVG usa currentColor */
 
 .cda-results__item-text {
   flex: 1;
@@ -673,13 +679,11 @@
   display: block;
 }
 
-/* DS: state/info-bg highlight */
+/* DS: highlight match — solo color, sin fondo */
 .cda-results__mark {
-  background: rgba(0,133,202,0.15); /* state/hover-overlay */
-  color: #0069a3; /* brand/primary-hover */
-  border-radius: 2px;
+  color: #0085ca; /* brand/primary */
   font-style: normal;
-  padding: 0 1px;
+  font-weight: 600;
 }
 
 .cda-results__item-arrow {

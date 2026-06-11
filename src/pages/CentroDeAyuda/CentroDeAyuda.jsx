@@ -518,8 +518,8 @@ function SearchResults({ results, query, onClose }) {
                 role="option"
                 onClick={onClose}
               >
-                {/* DS — surface/icon-blue badge */}
-                <div className="cda-results__item-badge" style={{ background: 'rgba(0,133,202,0.12)' }}>
+                {/* DS — brand primary icon, sin fondo */}
+                <div className="cda-results__item-badge">
                   <img src={cat.icon} alt="" />
                 </div>
                 <div className="cda-results__item-text">
