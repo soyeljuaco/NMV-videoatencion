@@ -301,86 +301,121 @@
   text-align: center;
 }
 
-/* Grid — 2 cols mobile, 4 cols desktop */
+/* ── Grid — un gran card contenedor con divisores internos
+   DS: border/default, radius 20px, sin gap (divisores por borde de celda)
+   overflow: visible para que el hover "Floating Card" pueda sobresalir */
+
 .cda-cats__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr); /* 2 cols mobile */
+  background: #ffffff;
+  border: 1px solid #dee2e6; /* border/default */
+  border-radius: 20px;
+  overflow: visible; /* crítico: permite que el hover escale sobre las vecinas */
+  position: relative;
 }
 
 @media (min-width: 1024px) {
-  .cda-cats__grid { grid-template-columns: repeat(4, 1fr); gap: 24px; } /* sp-6 */
+  .cda-cats__grid { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* ── Category card — DS: radius/xl 16px, shadow/card, border/default ── */
+/* ── Category card — sin imagen, layout plano ─────────────────────────
+   DS: padding sp-6 (24px), flex-col, gap sp-4 (16px)
+   Divisores internos via border-right / border-bottom               */
 
 .cda-cat {
   display: flex;
   flex-direction: column;
-  background: #ffffff; /* surface/default */
-  border: 1px solid #dee2e6; /* border/default */
-  border-radius: 16px; /* radius/xl */
-  overflow: hidden;
-  cursor: pointer;
+  gap: 16px; /* sp-4 */
+  padding: 28px 24px; /* sp-7 top, sp-6 horizontal */
   text-align: left;
-  height: 330px;
-  /* DS: shadow/card (Figma exact) */
-  box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.08);
-  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  /* Divisores internos del grid */
+  border-right: 1px solid #dee2e6; /* border/default */
+  border-bottom: 1px solid #dee2e6;
+  position: relative;
+  z-index: 1;
+
+  /* ── Hover: Floating Card — spring animation ── */
+  transition:
+    transform   0.32s cubic-bezier(0.34, 1.56, 0.64, 1), /* spring: overshoot sutil */
+    box-shadow  0.32s cubic-bezier(0.16, 1,    0.3,  1),
+    background  0.18s ease,
+    border-color 0.18s ease,
+    border-radius 0.18s ease;
 }
+
+/* Divisores: quitar borde derecho en última columna */
+.cda-cat:nth-child(4n)     { border-right: none; }
+/* Quitar borde inferior en las últimas 4 cards (fila 2) */
+.cda-cat:nth-child(n+5)    { border-bottom: none; }
+
+/* Mobile 2 cols: reajustar divisores */
+@media (max-width: 1023px) {
+  .cda-cat:nth-child(4n)    { border-right: 1px solid #dee2e6; } /* reset */
+  .cda-cat:nth-child(2n)    { border-right: none; }              /* 2ª col: sin borde */
+  .cda-cat:nth-child(n+5)   { border-bottom: 1px solid #dee2e6; } /* reset */
+  .cda-cat:nth-child(n+7)   { border-bottom: none; }              /* últimas 2 filas */
+}
+
+/* ── Hover: Floating Card ─────────────────────────────────────────────
+   La tarjeta se eleva sobre las vecinas: scale + translateY + sombra azulada
+   z-index: 10 la coloca encima de toda la grilla               */
 
 .cda-cat:hover {
-  border-color: #b3cde0;
-  box-shadow: 0px 8px 24px 0px rgba(0,0,0,0.12);
+  transform: scale(1.05) translateY(-6px);
+  z-index: 10;
+  background: #ffffff;
+  border-radius: 16px; /* radius/xl — la card "se independiza" del grid */
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  /* Sombra con tinte brand/primary para reforzar la identidad */
+  box-shadow:
+    0 24px 48px rgba(0, 133, 202, 0.16),
+    0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Image section — 160px */
-.cda-cat__img-wrap {
-  position: relative;
-  height: 160px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.cda-cat__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform: scale(1);
-  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cda-cat:hover .cda-cat__img { transform: scale(1.06); }
-
-/* Gradiente inferior: background se aplica vía inline style (dinámico por categoría)
-   DS: overlay goes from transparent → category gradient color (Figma 934:57) */
-.cda-cat__overlay {
+/* ── Línea azul superior — emerge del centro hacia los bordes en hover ── */
+.cda-cat::before {
+  content: '';
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
+  top: 0;
+  left: 50%;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 133, 202, 0) 0%,
+    #0085ca 30%,
+    #0085ca 70%,
+    rgba(0, 133, 202, 0) 100%
+  );
+  border-radius: 0 0 3px 3px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  opacity: 0;
+  transition:
+    transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity   0.2s ease;
 }
 
-/* Hover dim overlay */
-.cda-cat__hover-dim {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0);
-  transition: background 600ms ease;
-  pointer-events: none;
-  z-index: 2;
+.cda-cat:hover::before {
+  transform: translateX(-50%) scaleX(1);
+  opacity: 1;
 }
-.cda-cat:hover .cda-cat__hover-dim { background: rgba(0, 0, 0, 0.15); }
 
-/* Content below image */
-.cda-cat__body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px; /* sp-3 */
-  padding: 24px 24px 20px; /* sp-6 top/sides, adjusted bottom */
-  min-height: 0;
+/* ── Badge: cambio sutil en hover (refuerza el foco) ── */
+.cda-cat:hover .cda-cat__badge {
+  background: rgba(0, 133, 202, 0.18); /* ligeramente más intenso */
+  transition: background 0.2s ease;
+}
+
+/* ── Título: vira a brand/primary en hover ── */
+.cda-cat:hover .cda-cat__title {
+  color: #0085ca; /* text/brand */
+  transition: color 0.2s ease;
 }
 
 /* Icon badge + title row */
@@ -390,8 +425,7 @@
   gap: 12px; /* sp-3 */
 }
 
-/* DS: surface/icon-blue rgba(0,133,202,0.12) — unified across all categories
-   Figma var(--marca-principal/primaryiconbg) — radius/lg approx 14px */
+/* DS: surface/icon-blue rgba(0,133,202,0.12) — Figma var primaryiconbg, radius 14px */
 .cda-cat__badge {
   width: 40px;
   height: 40px;
@@ -401,6 +435,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: background 0.2s ease;
 }
 
 .cda-cat__badge-icon {
@@ -409,27 +444,26 @@
   object-fit: contain;
 }
 
-/* DS: label/lg 18px semibold, text/primary — Figma 934:67 Inter:Semi_Bold 18px */
+/* DS: Inter SemiBold 18px, text/primary — Figma 934:67 */
 .cda-cat__title {
   font-size: 18px;
   font-weight: 600;
   color: #212529; /* text/primary */
-  line-height: 28px; /* body-sm line-height */
+  line-height: 28px;
   flex: 1;
   min-width: 0;
+  text-align: left;
+  transition: color 0.2s ease;
 }
 
-/* DS: label/lg 16px regular, text/secondary — Figma 934:69 Inter:Regular 16px */
+/* DS: Inter Regular 16px, text/secondary — Figma 934:69 */
 .cda-cat__desc {
   font-size: 16px; /* label-lg */
   font-weight: 400;
   color: #495057; /* text/secondary */
-  line-height: 24px; /* label-lg line-height */
+  line-height: 24px;
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  text-align: left;
 }
 
 /* ══ FAQ ══════════════════════════════════════════════════════════════════

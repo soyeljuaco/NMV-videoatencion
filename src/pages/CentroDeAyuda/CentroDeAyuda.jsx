@@ -569,11 +569,9 @@ function SearchResults({ results, query, onClose }) {
 }
 
 // ── CatCard ───────────────────────────────────────────────────────────────────
-// DS NMV2026:
-//   badge bg → surface/icon-blue (rgba(0,133,202,0.12)) — unificado para todas
-//   gradient → overlay inferior dinámico por categoría (Figma 934:55)
-//   card title → label/lg semibold 18px, text/primary
-//   card desc  → label/lg regular 16px, text/secondary
+// DS NMV2026 — sin imagen, layout plano: icon badge + title + desc
+// Hover: "Floating Card" — scale(1.05) translateY(-6px) sobre vecinas, sombra azul
+// Figma 934:55 (versión actualizada sin imagen de portada)
 
 function CatCard({ cat, delay }) {
   return (
@@ -582,30 +580,16 @@ function CatCard({ cat, delay }) {
       style={{ '--delay': `${delay}ms` }}
       aria-label={cat.title}
     >
-      {/* ── Image area ── */}
-      <div className="cda-cat__img-wrap">
-        <img src={cat.img} alt="" className="cda-cat__img" />
-        {/* Gradiente inferior: color dinámico por categoría (DS: var per-card) */}
-        <div
-          className="cda-cat__overlay"
-          aria-hidden="true"
-          style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0) 40%, ${cat.gradient} 100%)` }}
-        />
-        <div className="cda-cat__hover-dim" aria-hidden="true" />
-      </div>
-
-      {/* ── Content below image ── */}
-      <div className="cda-cat__body">
-        {/* Icon badge: bg → surface/icon-blue, unified across all categories */}
-        <div className="cda-cat__head-row">
-          <div className="cda-cat__badge" aria-hidden="true">
-            <img src={cat.icon} alt="" className="cda-cat__badge-icon" />
-          </div>
-          <span className="cda-cat__title">{cat.title}</span>
+      {/* Icon badge + title en misma fila — DS: surface/icon-blue, gap sp-3 */}
+      <div className="cda-cat__head-row">
+        <div className="cda-cat__badge" aria-hidden="true">
+          <img src={cat.icon} alt="" className="cda-cat__badge-icon" />
         </div>
-
-        <p className="cda-cat__desc">{cat.desc}</p>
+        <span className="cda-cat__title">{cat.title}</span>
       </div>
+
+      {/* Descripción — DS: label/lg regular, text/secondary */}
+      <p className="cda-cat__desc">{cat.desc}</p>
     </button>
   )
 }
