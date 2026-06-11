@@ -359,13 +359,26 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 4px;
   background: #0085ca; /* brand/primary */
   opacity: 0;
   transition: opacity 0.18s ease;
 }
 
 .cda-cat:hover::before { opacity: 1; }
+
+/* Corner cards: la línea sigue el border-radius del contenedor (20px) ──────
+   Desktop (4 cols): card 1 = top-left, card 4 = top-right
+   Mobile  (2 cols): card 1 = top-left, card 2 = top-right               */
+.cda-cat:first-child::before       { border-radius: 20px 0 0 0; }
+
+@media (min-width: 1024px) {
+  .cda-cat:nth-child(4)::before    { border-radius: 0 20px 0 0; }
+}
+
+@media (max-width: 1023px) {
+  .cda-cat:nth-child(2)::before    { border-radius: 0 20px 0 0; }
+}
 
 /* Icon badge + title row */
 .cda-cat__head-row {

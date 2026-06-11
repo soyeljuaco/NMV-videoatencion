@@ -55,15 +55,16 @@
 .faq__item--open .faq__trigger { background: transparent; }
 
 .faq__question {
+  font-family: 'Inter', sans-serif; /* DS: font/body — override Raleway inheritance */
   font-size: 17px;
-  font-weight: 600;
-  color: #0a0a0a;
+  font-weight: 600; /* semibold */
+  color: #212529; /* text/primary */
   line-height: 1.4;
   flex: 1;
   letter-spacing: -0.3px;
 }
 
-.faq__item--open .faq__question { color: #0085ca; }
+.faq__item--open .faq__question { color: #0085ca; /* text/brand when open */ }
 
 .faq__trigger svg { color: #adb5bd; }
 .faq__item--open .faq__trigger svg { color: #0085ca; }
@@ -88,7 +89,7 @@
 
 .faq__intro {
   font-size: 16px;
-  color: #0a0a0a;
+  color: #495057; /* text/secondary — DS body text */
   line-height: 1.5rem;
   margin: 0;
 }
@@ -125,10 +126,12 @@
   gap: 12px;
 }
 
+/* DS: h4 inherits global Raleway — force Inter SemiBold */
 .faq__section-title {
+  font-family: 'Inter', sans-serif; /* override h4 Raleway */
   font-size: 16px;
-  font-weight: 600;
-  color: #0a0a0a;
+  font-weight: 600; /* semibold */
+  color: #212529; /* text/primary */
   margin: 0;
   line-height: 1.5rem;
 }
@@ -149,7 +152,7 @@
   align-items: baseline;
   gap: 10px;
   font-size: 15px;
-  color: #555;
+  color: #495057; /* text/secondary */
   line-height: 1.5;
 }
 
@@ -194,7 +197,7 @@
 
 .faq__step-text {
   font-size: 15px;
-  color: #555;
+  color: #495057; /* text/secondary */
   line-height: 1.55;
   padding-top: 2px;
 }
