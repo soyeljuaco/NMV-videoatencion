@@ -11,18 +11,25 @@
 
 /* ── Container ──────────────────────────────────────────── */
 
-.faq { display: flex; flex-direction: column; width: 100%; }
+/* DS NMV2026: individual cards with gap sp-2 (8px) — Figma 937:183 */
+.faq { display: flex; flex-direction: column; gap: 8px; width: 100%; }
 
-/* ── Item ───────────────────────────────────────────────── */
+/* ── Item — DS: bg surface/default, border/default, radius 14px ─── */
 
 .faq__item {
-  border-bottom: 1px solid #dee2e6;
-  background: #ffffff;
+  background: #ffffff; /* surface/default */
+  border: 1px solid #dee2e6; /* border/default */
+  border-radius: 14px;
+  overflow: hidden;
 }
 
-.faq__item:first-child { border-radius: 16px 16px 0 0; }
-.faq__item:last-child  { border-bottom: none; border-radius: 0 0 16px 16px; }
-.faq__item:only-child  { border-radius: 16px; }
+/* Individual cards: all corners rounded equally */
+.faq__item:first-child { border-radius: 14px; }
+.faq__item:last-child  { border-radius: 14px; }
+.faq__item:only-child  { border-radius: 14px; }
+
+/* DS: open state → border/selected */
+.faq__item--open { border-color: #0085ca; }
 
 .faq__item--open { background: #ffffff; }
 

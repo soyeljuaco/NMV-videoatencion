@@ -1,5 +1,6 @@
 /**
  * CentroDeAyuda — Centro de Ayuda page (/centro-de-ayuda)
+ * Actualizado al diseño DS NMV2026 (Figma node 924:2)
  *
  * Props:
  *   onAgendar   fn — navigate to the videoatención wizard
@@ -13,18 +14,19 @@ import './CentroDeAyuda.css'
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
-const SEARCH_TAGS = ['Solicitar bono', 'Licencia médica', 'Videoatención', 'Mi plan']
+// DS NMV2026 — tokens: text/brand (#0085CA), border/default (#DEE2E6)
+const SEARCH_TAGS = ['Reembolsos', 'Licencias médicas', 'Presupuestos', 'GES / CAEC', 'Videoatención']
 
-// Cycling placeholder texts for animated search bar
 const SEARCH_PLACEHOLDERS = [
-  'Busca por tema, trámite o palabra clave…',
-  '¿Cómo solicitar un bono de atención?',
+  'Busca licencias médicas, bonos o reembolsos…',
+  '¿Cómo solicitar un reembolso?',
   '¿Qué cubre mi plan de salud?',
   '¿Cómo acceder a la Videoatención?',
   '¿Qué es el GES y CAEC?',
 ]
 
-// Exact gradients and badge colors from Figma node 764:4211
+// gradient: overlay inferior de la imagen de portada (por categoría, Figma 934:55)
+// badge bg: unificado → surface/icon-blue = rgba(0,133,202,0.12) (Figma var primaryiconbg)
 const CATEGORIES = [
   {
     id: 'plan-salud',
@@ -32,7 +34,7 @@ const CATEGORIES = [
     desc: 'Contrato de Salud, Cargas legales, Cargas médicas, Copia de contrato.',
     img: A.catPlanSalud,
     icon: A.helpHealth,
-    badgeBg: 'rgba(37,163,55,0.1)',
+    gradient: 'rgba(46,204,113,0.25)',
   },
   {
     id: 'bonos',
@@ -40,15 +42,15 @@ const CATEGORIES = [
     desc: 'Bonos de atención, Copago, Reembolsos, Documentación.',
     img: A.catBonos,
     icon: A.helpBillCheck,
-    badgeBg: 'rgba(0,133,202,0.1)',
+    gradient: 'rgba(58,170,53,0.25)',
   },
   {
     id: 'ges',
     title: 'GES / CAEC',
-    desc: 'Acceso garantizado, Tiempos máximos de espera, Protección financiera.',
+    desc: 'Acceso, Tiempos de espera, Protección financiera.',
     img: A.catGes,
     icon: A.helpSecurity,
-    badgeBg: 'rgba(239,144,51,0.1)',
+    gradient: 'rgba(232,76,61,0.25)',
   },
   {
     id: 'licencias',
@@ -56,7 +58,7 @@ const CATEGORIES = [
     desc: 'Requisitos de licencias médicas, Documentación.',
     img: A.catLicencias,
     icon: A.helpLicense,
-    badgeBg: 'rgba(110,78,209,0.1)',
+    gradient: 'rgba(232,76,61,0.25)',
   },
   {
     id: 'urgencias',
@@ -64,7 +66,7 @@ const CATEGORIES = [
     desc: 'Información sobre atención de urgencia y emergencia vital.',
     img: A.catUrgencias,
     icon: A.helpDoctor,
-    badgeBg: 'rgba(226,56,39,0.1)',
+    gradient: 'rgba(192,57,43,0.25)',
   },
   {
     id: 'presupuestos',
@@ -72,7 +74,7 @@ const CATEGORIES = [
     desc: 'Presupuesto hospitalario, Programa médico, Prefactura.',
     img: A.catPresupuestos,
     icon: A.helpDoc,
-    badgeBg: 'rgba(124,132,154,0.1)',
+    gradient: 'rgba(0,131,200,0.25)',
   },
   {
     id: 'independientes',
@@ -80,7 +82,7 @@ const CATEGORIES = [
     desc: 'Cambio de empleador, beneficios para independientes.',
     img: A.catIndependientes,
     icon: A.helpBriefcase,
-    badgeBg: 'rgba(113,52,116,0.1)',
+    gradient: 'rgba(245,148,29,0.25)',
   },
   {
     id: 'beneficios',
@@ -88,11 +90,11 @@ const CATEGORIES = [
     desc: 'Descuentos preferenciales, Beneficios adicionales, Servicios gratuitos.',
     img: A.catBeneficios,
     icon: A.helpGift,
-    badgeBg: 'rgba(200,183,0,0.1)',
+    gradient: 'rgba(155,89,182,0.25)',
   },
 ]
 
-// Rich accordion data — structure: intro, timeEstimate?, requirements?, steps[]
+// DS NMV2026 — Preguntas actualizadas (Figma 937:183)
 const FAQ_ITEMS = [
   {
     id: 'reembolso',
@@ -115,71 +117,69 @@ const FAQ_ITEMS = [
     ],
   },
   {
-    id: 'plan',
-    q: '¿Qué cubre mi plan de salud?',
-    intro: 'Tu plan cubre consultas médicas, exámenes, hospitalizaciones y procedimientos quirúrgicos según los porcentajes de tu contrato.',
-    timeEstimate: null,
+    id: 'plazo-reembolso',
+    q: '¿Cuál es el plazo para solicitar un reembolso?',
+    intro: 'Tienes hasta 2 años desde la fecha de atención para solicitar un reembolso. Te recomendamos hacerlo lo antes posible para agilizar el proceso.',
     requirements: [
-      'Cédula de identidad vigente',
-      'Número de contrato de salud',
+      'Fecha de atención no mayor a 2 años',
+      'Documentos originales del prestador',
     ],
     steps: [
-      'Ingresa a Mi Sucursal Virtual con tu RUT y clave',
-      'Selecciona "Mi plan de salud"',
-      'Revisa las coberturas, copagos y topes de tu contrato',
-      'Descarga tu contrato vigente si lo necesitas',
+      'Verifica que la atención sea menor a 2 años',
+      'Reúne tus boletas y documentos',
+      'Ingresa a Mi Sucursal Virtual',
+      'Completa el formulario de reembolso',
     ],
   },
   {
-    id: 'video',
-    q: '¿Cómo puedo acceder a la Videoatención?',
-    intro: 'La Videoatención te permite consultar a un médico o especialista desde cualquier lugar con conexión a internet.',
-    timeEstimate: 'La consulta tiene una duración aproximada de 20 minutos',
+    id: 'licencia',
+    q: '¿Cómo se presenta una licencia médica?',
+    intro: 'La licencia médica debe presentarse dentro de 3 días hábiles desde el inicio del reposo. Puedes hacerlo en línea o en cualquier sucursal.',
     requirements: [
-      'Dispositivo con cámara y micrófono',
-      'Conexión a internet estable',
-      'Sesión activa en la Sucursal Virtual',
+      'Licencia médica original emitida por el médico tratante',
+      'Cédula de identidad vigente',
+    ],
+    steps: [
+      'Recibe la licencia de tu médico',
+      'Ingresa a Mi Sucursal Virtual o ve a una sucursal',
+      'Sube o entrega la licencia dentro de 3 días hábiles',
+      'Recibirás un correo con el estado de tu licencia',
+    ],
+  },
+  {
+    id: 'carga-familiar',
+    q: '¿Cómo agrego una carga familiar a mi plan?',
+    intro: 'Puedes incorporar cargas legales (cónyuge e hijos) y cargas médicas a tu plan de salud. El proceso se realiza en línea o en sucursal.',
+    requirements: [
+      'Cédula de identidad del titular y la carga',
+      'Certificado de nacimiento (para hijos)',
+      'Certificado de matrimonio (para cónyuge)',
     ],
     steps: [
       'Ingresa a Mi Sucursal Virtual',
-      'Selecciona la sección "Videoatención"',
-      'Elige el motivo de consulta, la sucursal y el horario',
-      'Recibirás un correo con el enlace a tu consulta',
-    ],
-  },
-  {
-    id: 'ges',
-    q: '¿Qué es el GES y qué enfermedades cubre?',
-    intro: 'El GES (Garantías Explícitas en Salud) garantiza atención oportuna y protección financiera para más de 85 enfermedades prioritarias.',
-    timeEstimate: null,
-    requirements: [
-      'Diagnóstico médico confirmado de una enfermedad GES',
-      'Derivación del médico tratante',
-      'Carnet GES emitido por tu isapre',
-    ],
-    steps: [
-      'Consulta con tu médico si tu enfermedad está en el listado GES',
-      'Solicita la apertura del caso GES en tu isapre',
-      'Recibe tu carnet GES con las garantías de tu tratamiento',
-      'Accede a los prestadores de la red GES de Nueva Masvida',
+      'Ve a "Mi plan" → "Cargas"',
+      'Selecciona el tipo de carga y completa los datos',
+      'Sube los documentos requeridos',
+      'Recibirás confirmación por correo',
     ],
   },
 ]
 
+// DS NMV2026 — Canales de contacto (Figma 937:225)
 const CONTACTS = [
   {
     id: 'whatsapp',
     icon: A.contactWhatsapp,
     title: 'WhatsApp',
-    desc: 'Respuesta en minutos, cuando lo necesites',
+    desc: 'Respuestas en minutos, cuando lo necesites.',
     cta: 'Iniciar chat',
     href: 'https://wa.me/56600600262',
   },
   {
     id: 'phone',
     icon: A.contactPhone,
-    title: '600 6000 262',
-    desc: 'Lunes a viernes de 8:00 a 20:00 hrs',
+    title: '600 600 262',
+    desc: 'Lunes a viernes de 08:00 a 20:00 hrs',
     cta: 'Llamar ahora',
     href: 'tel:600600262',
   },
@@ -187,8 +187,8 @@ const CONTACTS = [
     id: 'video',
     icon: A.contactVideo,
     title: 'Videoatención',
-    desc: 'Consulta con un médico desde tu casa',
-    cta: 'Agendar hora',
+    desc: 'Atención personalizada con un ejecutivo.',
+    cta: 'Agendar ahora',
     action: 'agendar',
   },
   {
@@ -221,27 +221,25 @@ export default function CentroDeAyuda({ onAgendar }) {
   return (
     <div className="cda">
 
-      {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
+      {/* ══ HERO ══════════════════════════════════════════════════════════════
+          DS NMV2026 — surface/subtle bg, title: text/brand (#0085CA), Raleway Bold
+          Figma: 927:2 */}
       <section className="cda-hero">
         <div
           ref={hero.ref}
           className={`cda-hero__inner reveal-block ${hero.visible ? 'revealed' : ''}`}
         >
-          {/* Title — all same weight */}
           <h1 className="cda-hero__title">
-            ¿En qué podemos ayudarte?
+            ¿Cómo podemos ayudarte?
           </h1>
-
-          {/* Subtitle */}
-          <p className="cda-hero__sub">
-            Encuentra información sobre tu plan de salud, licencias médicas, pagos y mucho más.
-          </p>
 
           <HelpSearchBar />
         </div>
       </section>
 
-      {/* ══ CATEGORIES ════════════════════════════════════════════════════════ */}
+      {/* ══ CATEGORIES ════════════════════════════════════════════════════════
+          DS NMV2026 — surface/default bg, badge bg: surface/icon-blue
+          Figma: 934:50 */}
       <section className="cda-cats">
         <div className="cda-cats__inner">
           <div
@@ -265,7 +263,9 @@ export default function CentroDeAyuda({ onAgendar }) {
         </div>
       </section>
 
-      {/* ══ FAQ ═══════════════════════════════════════════════════════════════ */}
+      {/* ══ FAQ ═══════════════════════════════════════════════════════════════
+          DS NMV2026 — surface/subtle bg, accordion: individual border-border-default cards
+          Figma: 937:179 */}
       <section className="cda-faq">
         <div className="cda-faq__inner">
           <div
@@ -274,25 +274,18 @@ export default function CentroDeAyuda({ onAgendar }) {
           >
             <div className="cda-faq__head">
               <h2 className="cda-faq__title">Preguntas frecuentes</h2>
-              <p className="cda-faq__sub">Las dudas más comunes, respondidas en detalle</p>
             </div>
 
             <div className="cda-faq__accordion">
               <FAQAccordion items={FAQ_ITEMS} />
             </div>
-
-            <div className="cda-faq__more">
-              <p className="cda-faq__more-text">¿No encontraste lo que buscabas?</p>
-              <button type="button" className="cda-faq__more-btn">
-                Ver todas las preguntas
-                <ArrowRightIcon />
-              </button>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ══ CONTACT ═══════════════════════════════════════════════════════════ */}
+      {/* ══ CONTACT ═══════════════════════════════════════════════════════════
+          DS NMV2026 — brand/primary bg, cards: surface/default, 2×2 grid
+          Figma: 937:225 */}
       <section className="cda-contact">
         <div className="cda-contact__inner">
 
@@ -300,22 +293,13 @@ export default function CentroDeAyuda({ onAgendar }) {
             ref={contact.ref}
             className={`cda-contact__left reveal-block ${contact.visible ? 'revealed' : ''}`}
           >
-            {/* "Estamos aquí para ti" — white */}
-            <p className="cda-contact__eyebrow">Estamos aquí para ti</p>
+            {/* DS — body/md 20px regular, text/on-brand */}
+            <p className="cda-contact__eyebrow">¿Aún tienes dudas?</p>
+            {/* DS — display/section 48px, Raleway: regular + bold */}
             <h2 className="cda-contact__title">
               Elige el canal que<br />
               <strong>más te acomode</strong>
             </h2>
-            {/* font-size 20px, min-width 500px */}
-            <p className="cda-contact__sub">
-              Nuestros ejecutivos están disponibles para resolver cualquier consulta de forma rápida y cercana.
-            </p>
-            <img
-              src={A.decoD2}
-              alt=""
-              aria-hidden="true"
-              className="cda-contact__deco"
-            />
           </div>
 
           <div className="cda-contact__cards">
@@ -379,7 +363,7 @@ function HelpSearchBar() {
     return () => clearInterval(id)
   }, [query])
 
-  // Compute filtered results — search across question, intro, requirements and steps
+  // Compute filtered results
   const results = useMemo(() => {
     const q = query.toLowerCase().trim()
     if (!q) return null
@@ -460,9 +444,8 @@ function HelpSearchBar() {
         {showPanel && <SearchResults results={results} query={query} onClose={() => setFocused(false)} />}
       </div>
 
-      {/* Quick-access chips */}
+      {/* Quick-access chips — DS NMV2026: border/default pill buttons */}
       <div className="cda-search__tags">
-        <span className="cda-search__label">Lo más buscado:</span>
         {SEARCH_TAGS.map(tag => (
           <button
             key={tag}
@@ -483,7 +466,6 @@ function HelpSearchBar() {
 function SearchResults({ results, query, onClose }) {
   const hasResults = results && (results.cats.length > 0 || results.faqs.length > 0)
 
-  // Highlight matching text
   function hi(text) {
     const q = query.trim()
     if (!q) return text
@@ -525,7 +507,8 @@ function SearchResults({ results, query, onClose }) {
                 role="option"
                 onClick={onClose}
               >
-                <div className="cda-results__item-badge" style={{ background: cat.badgeBg }}>
+                {/* DS — surface/icon-blue badge */}
+                <div className="cda-results__item-badge" style={{ background: 'rgba(0,133,202,0.12)' }}>
                   <img src={cat.icon} alt="" />
                 </div>
                 <div className="cda-results__item-text">
@@ -574,11 +557,13 @@ function SearchResults({ results, query, onClose }) {
   )
 }
 
-/**
- * CatCard — matches Figma 764:4211 exactly:
- *   - image (160px) with black bottom gradient + zoom on hover
- *   - content: [icon badge] + [title] row, then description paragraph
- */
+// ── CatCard ───────────────────────────────────────────────────────────────────
+// DS NMV2026:
+//   badge bg → surface/icon-blue (rgba(0,133,202,0.12)) — unificado para todas
+//   gradient → overlay inferior dinámico por categoría (Figma 934:55)
+//   card title → label/lg semibold 18px, text/primary
+//   card desc  → label/lg regular 16px, text/secondary
+
 function CatCard({ cat, delay }) {
   return (
     <button
@@ -589,32 +574,38 @@ function CatCard({ cat, delay }) {
       {/* ── Image area ── */}
       <div className="cda-cat__img-wrap">
         <img src={cat.img} alt="" className="cda-cat__img" />
-        {/* Gradiente negro fijo en base */}
-        <div className="cda-cat__overlay" aria-hidden="true" />
-        {/* Oscurecido sutil en hover — igual que bg-zoom-overlay */}
+        {/* Gradiente inferior: color dinámico por categoría (DS: var per-card) */}
+        <div
+          className="cda-cat__overlay"
+          aria-hidden="true"
+          style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0) 40%, ${cat.gradient} 100%)` }}
+        />
         <div className="cda-cat__hover-dim" aria-hidden="true" />
       </div>
 
       {/* ── Content below image ── */}
       <div className="cda-cat__body">
-        {/* Icon badge + title on same row */}
+        {/* Icon badge: bg → surface/icon-blue, unified across all categories */}
         <div className="cda-cat__head-row">
-          <div
-            className="cda-cat__badge"
-            style={{ background: cat.badgeBg }}
-            aria-hidden="true"
-          >
+          <div className="cda-cat__badge" aria-hidden="true">
             <img src={cat.icon} alt="" className="cda-cat__badge-icon" />
           </div>
           <span className="cda-cat__title">{cat.title}</span>
         </div>
 
-        {/* Description */}
         <p className="cda-cat__desc">{cat.desc}</p>
       </div>
     </button>
   )
 }
+
+// ── ContactCard ───────────────────────────────────────────────────────────────
+// DS NMV2026:
+//   layout → vertical flex-col, gap sp-3 (12px)
+//   icon badge → surface/icon-blue 40×40 rounded-lg (14px)
+//   title → label/lg semibold, text/primary
+//   desc  → label/lg regular, text/secondary
+//   cta   → label/lg semibold, text/brand → inline text link con →
 
 function ContactCard({ contact, delay, revealed, onAction }) {
   return (
@@ -623,16 +614,15 @@ function ContactCard({ contact, delay, revealed, onAction }) {
       style={{ transitionDelay: `${delay}ms` }}
       onClick={onAction}
     >
+      {/* DS — surface/icon-blue badge */}
       <div className="cda-ccard__icon-wrap">
         <img src={contact.icon} alt="" className="cda-ccard__icon" />
       </div>
-      <div className="cda-ccard__text">
-        <span className="cda-ccard__title">{contact.title}</span>
-        <span className="cda-ccard__desc">{contact.desc}</span>
-      </div>
+      <span className="cda-ccard__title">{contact.title}</span>
+      <span className="cda-ccard__desc">{contact.desc}</span>
+      {/* DS — text/brand semibold, inline arrow */}
       <span className="cda-ccard__cta">
-        {contact.cta}
-        <ArrowRightIcon />
+        {contact.cta} →
       </span>
     </button>
   )
