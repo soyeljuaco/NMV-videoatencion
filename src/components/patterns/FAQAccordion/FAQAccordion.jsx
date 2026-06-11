@@ -191,7 +191,7 @@ function ChevronIcon({ open }) {
         flexShrink: 0,
       }}
     >
-      <path d="M5 8l5 5 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M5 8l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -224,8 +224,8 @@ function ThumbDownIcon() {
 function WaIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M8 1.5A6.5 6.5 0 0 0 2.07 10.9L1.5 14.5l3.7-.56A6.5 6.5 0 1 0 8 1.5Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round"/>
-      <path d="M5.5 6.5c0 3 5 5 5 2.5-.5-.5-1-.5-1.5-.25-.25.25-.5.5-1 .25S6.5 7.5 6.25 7c-.25-.5 0-.75.25-1s.5-1 .25-1.5C6.5 4 5.5 5.5 5.5 6.5Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/>
+      <path d="M8 1.5A6.5 6.5 0 0 0 2.07 10.9L1.5 14.5l3.7-.56A6.5 6.5 0 1 0 8 1.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M5.5 6.5c0 3 5 5 5 2.5-.5-.5-1-.5-1.5-.25-.25.25-.5.5-1 .25S6.5 7.5 6.25 7c-.25-.5 0-.75.25-1s.5-1 .25-1.5C6.5 4 5.5 5.5 5.5 6.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -233,7 +233,7 @@ function WaIcon() {
 function PhoneCallIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M2 3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.4l.5 2.5a.5.5 0 0 1-.14.47L4.2 6.5A7 7 0 0 0 9.5 11.8l1.13-1.16a.5.5 0 0 1 .47-.14l2.5.5a.5.5 0 0 1 .4.5V14a.5.5 0 0 1-.5.5C5.65 14.5 1.5 10.35 1.5 5.5V3H2Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" fill="none"/>
+      <path d="M2 3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.4l.5 2.5a.5.5 0 0 1-.14.47L4.2 6.5A7 7 0 0 0 9.5 11.8l1.13-1.16a.5.5 0 0 1 .47-.14l2.5.5a.5.5 0 0 1 .4.5V14a.5.5 0 0 1-.5.5C5.65 14.5 1.5 10.35 1.5 5.5V3H2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
     </svg>
   )
 }
@@ -241,8 +241,8 @@ function PhoneCallIcon() {
 function UserIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <circle cx="8" cy="5" r="3" stroke="currentColor" strokeWidth="1.4"/>
-      <path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+      <circle cx="8" cy="5" r="3" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
   )
 }

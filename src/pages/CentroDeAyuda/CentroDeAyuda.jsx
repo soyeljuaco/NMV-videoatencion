@@ -628,7 +628,7 @@ function ContactCard({ contact, delay, revealed, onAction }) {
 function ArrowRightIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -636,7 +636,7 @@ function ArrowRightIcon() {
 function ClearIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+      <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
   )
 }
@@ -644,8 +644,8 @@ function ClearIcon() {
 function FAQResultIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-      <circle cx="9" cy="9" r="7.25" stroke="currentColor" strokeWidth="1.6"/>
-      <path d="M7 7a2.1 2.1 0 0 1 4.1.6c0 1.4-2.1 1.8-2.1 3.1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+      <circle cx="9" cy="9" r="7.25" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M7 7a2.1 2.1 0 0 1 4.1.6c0 1.4-2.1 1.8-2.1 3.1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       <circle cx="9" cy="13.2" r="0.8" fill="currentColor"/>
     </svg>
   )
@@ -655,9 +655,9 @@ function NoResultsIcon() {
   return (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
       <circle cx="18" cy="18" r="12" stroke="#ced4da" strokeWidth="2"/>
-      <path d="M27 27l7 7" stroke="#ced4da" strokeWidth="2.2" strokeLinecap="round"/>
+      <path d="M27 27l7 7" stroke="#ced4da" strokeWidth="2" strokeLinecap="round"/>
       <path d="M14 18h8M18 14v8" stroke="#ced4da" strokeWidth="2" strokeLinecap="round"/>
-      <path d="M14 14l8 8M22 14l-8 8" stroke="#dee2e6" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M14 14l8 8M22 14l-8 8" stroke="#dee2e6" strokeWidth="2" strokeLinecap="round"/>
     </svg>
   )
 }
