@@ -518,10 +518,6 @@ function SearchResults({ results, query, onClose }) {
                 role="option"
                 onClick={onClose}
               >
-                {/* DS — brand primary icon, sin fondo */}
-                <div className="cda-results__item-badge">
-                  <img src={cat.icon} alt="" />
-                </div>
                 <div className="cda-results__item-text">
                   <span className="cda-results__item-title">{hi(cat.title)}</span>
                   <span className="cda-results__item-desc">{hi(cat.desc)}</span>
@@ -548,9 +544,6 @@ function SearchResults({ results, query, onClose }) {
                 role="option"
                 onClick={onClose}
               >
-                <div className="cda-results__item-badge cda-results__item-badge--faq">
-                  <FAQResultIcon />
-                </div>
                 <div className="cda-results__item-text">
                   <span className="cda-results__item-title">{hi(faq.q)}</span>
                   <span className="cda-results__item-desc">

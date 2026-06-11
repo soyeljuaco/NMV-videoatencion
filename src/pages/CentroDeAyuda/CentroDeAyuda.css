@@ -612,6 +612,7 @@
   color: #adb5bd; /* text/disabled */
   padding: 12px 20px 6px;
   margin: 0;
+  text-align: left;
 }
 
 .cda-results__item {
@@ -658,9 +659,9 @@
   gap: 2px;
 }
 
-/* DS: label-md 14px semibold, text/primary */
+/* DS: 20px semibold, text/primary */
 .cda-results__item-title {
-  font-size: 14px; /* label-md */
+  font-size: 20px;
   font-weight: 600;
   color: #212529; /* text/primary */
   white-space: nowrap;
@@ -669,18 +670,21 @@
   display: block;
 }
 
-/* DS: label-sm 12px, text/tertiary */
+/* DS: 16px regular, text/secondary */
 .cda-results__item-desc {
-  font-size: 12px; /* label-sm */
-  color: #6c757d; /* text/tertiary */
+  font-size: 16px;
+  color: #495057; /* text/secondary */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
 }
 
-/* DS: highlight match — solo color, sin fondo */
+/* DS: highlight match — solo color, sin fondo
+   background: none explícito para sobreescribir el default amarillo del <mark> */
 .cda-results__mark {
+  background: none;
+  background-color: transparent;
   color: #0085ca; /* brand/primary */
   font-style: normal;
   font-weight: 600;
