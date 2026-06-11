@@ -60,6 +60,8 @@
   z-index: 20;
 }
 
+/* DS: gap sp-2 (8px) entre eyebrow+title, luego sp-6 (24px) hacia la search bar
+   Figma 927:4 gap-[8px] entre eyebrow y title, 927:3 gap-[24px] general */
 .cda-hero__inner {
   width: 100%;
   max-width: 894px;
@@ -67,16 +69,37 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 24px; /* sp-6 */
+  gap: 24px; /* sp-6 entre los bloques principales */
+}
+
+/* Eyebrow + title agrupados con gap 8px (sp-2) */
+.cda-hero__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px; /* sp-2 — Figma 927:4 gap-[8px] */
+}
+
+/* DS: brand/secondary (#713474), overline 12px semibold, tracking-wide uppercase
+   Figma 978:1134 — Inter:Semi_Bold, 12px, letter-spacing 0.6px */
+.cda-hero__eyebrow {
+  font-family: inherit;
+  font-size: 12px; /* overline */
+  font-weight: 600;
+  color: #713474; /* brand/secondary (purple) */
+  letter-spacing: 0.6px; /* tracking-wide */
+  text-transform: uppercase;
+  line-height: 16px;
+  margin: 0;
 }
 
 /* DS: font/display (Raleway) Bold, type/display-section (48px/52px)
-   color: text/brand (#0085CA) — Figma 927:5 */
+   color: text/primary (#212529) — Figma 927:5 */
 .cda-hero__title {
   font-family: 'Raleway', sans-serif;
-  font-size: clamp(32px, 5vw, 48px); /* heading-lg → display-section */
+  font-size: clamp(32px, 5vw, 48px); /* display-section */
   font-weight: 700;
-  color: #0085ca; /* text/brand */
+  color: #212529; /* text/primary */
   line-height: 1.1;
   margin: 0;
 }
@@ -210,26 +233,37 @@
   gap: 8px; /* sp-2 */
 }
 
-/* DS: bg surface/default, border/default, text/primary
-   hover → state/selected-bg + border/selected */
+/* DS: bg surface/default, border/default, gap sp-2 (10px icon+text)
+   Figma 927:13 — flex gap-[10px] items-center px-[16px] py-[10px] rounded-[100px] */
 .cda-search__tag {
   display: inline-flex;
   align-items: center;
-  padding: 10px 16px; /* sp-4 horizontal, 10px vertical */
+  gap: 10px; /* sp-3 approx — icon + label */
+  padding: 10px 16px; /* py-10 px-16 */
   border-radius: 9999px; /* radius/pill */
   font-family: inherit;
   font-size: 14px; /* label-md */
   font-weight: 500;
   background: #ffffff; /* surface/default */
   border: 1px solid #dee2e6; /* border/default */
-  color: #212529; /* text/primary */
+  color: #495057; /* text/secondary — Figma texto/textbody */
   cursor: pointer;
   transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
   white-space: nowrap;
 }
-.cda-search__tag:hover { background: #e6f4fb; border-color: #0085ca; color: #0069a3; } /* state/selected-bg + selected */
-.cda-search__tag--active { background: #0085ca; border-color: #0085ca; color: #ffffff; } /* brand/primary */
-.cda-search__tag--active:hover { background: #0069a3; border-color: #0069a3; } /* brand/primary-hover */
+.cda-search__tag:hover { background: #e6f4fb; border-color: #0085ca; color: #0069a3; }
+.cda-search__tag--active { background: #0085ca; border-color: #0085ca; color: #ffffff; }
+.cda-search__tag--active:hover { background: #0069a3; border-color: #0069a3; }
+
+/* DS: ícono 24×24 dentro del tag — Figma 980:1777 size-[24px] */
+.cda-search__tag-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+.cda-search__tag--active .cda-search__tag-icon { opacity: 1; filter: brightness(0) invert(1); }
 
 /* ══ CATEGORIES ══════════════════════════════════════════════════════════
    DS: bg surface/default, inner max-w 1200px   Figma: 934:50 */

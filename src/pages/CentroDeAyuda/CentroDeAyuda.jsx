@@ -14,11 +14,17 @@ import './CentroDeAyuda.css'
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
-// DS NMV2026 — tokens: text/brand (#0085CA), border/default (#DEE2E6)
-const SEARCH_TAGS = ['Reembolsos', 'Licencias médicas', 'Presupuestos', 'GES / CAEC', 'Videoatención']
+// DS NMV2026 — Quick-search tags con ícono (Figma 927:12)
+// 4 tags con iconstack.io icon + label, text/secondary, border/default
+const SEARCH_TAGS = [
+  { id: 'reembolsos',    label: 'Reembolsos',       icon: A.helpBillCheck },
+  { id: 'licencias',    label: 'Licencias médicas', icon: A.helpLicense   },
+  { id: 'ges',          label: 'GES / CAEC',        icon: A.helpSecurity  },
+  { id: 'videoatencion',label: 'Videoatención',     icon: A.iconCompVideo },
+]
 
 const SEARCH_PLACEHOLDERS = [
-  'Busca licencias médicas, bonos o reembolsos…',
+  'Busca licencias médicas, bonos o reembolsos...',
   '¿Cómo solicitar un reembolso?',
   '¿Qué cubre mi plan de salud?',
   '¿Cómo acceder a la Videoatención?',
@@ -222,16 +228,20 @@ export default function CentroDeAyuda({ onAgendar }) {
     <div className="cda">
 
       {/* ══ HERO ══════════════════════════════════════════════════════════════
-          DS NMV2026 — surface/subtle bg, title: text/brand (#0085CA), Raleway Bold
-          Figma: 927:2 */}
+          DS NMV2026 — surface/subtle bg, Figma: 927:2
+          Eyebrow: brand/secondary #713474, Inter SemiBold 12px, tracking-wide uppercase
+          Título: text/primary #212529, Raleway Bold 48px */}
       <section className="cda-hero">
         <div
           ref={hero.ref}
           className={`cda-hero__inner reveal-block ${hero.visible ? 'revealed' : ''}`}
         >
-          <h1 className="cda-hero__title">
-            ¿Cómo podemos ayudarte?
-          </h1>
+          {/* Eyebrow + título agrupados con gap 8px — Figma 927:4 */}
+          <div className="cda-hero__header">
+            {/* DS: brand/secondary (#713474), overline 12px semibold uppercase — Figma 978:1134 */}
+            <p className="cda-hero__eyebrow">CENTRO DE AYUDA</p>
+            <h1 className="cda-hero__title">¿Cómo podemos ayudarte?</h1>
+          </div>
 
           <HelpSearchBar />
         </div>
@@ -386,8 +396,8 @@ function HelpSearchBar() {
   const showPanel = focused && query.trim().length > 0
 
   function pickTag(tag) {
-    setQuery(tag)
-    setActive(tag)
+    setQuery(tag.label)
+    setActive(tag.id)
     setFocused(true)
     inputRef.current?.focus()
   }
@@ -444,16 +454,17 @@ function HelpSearchBar() {
         {showPanel && <SearchResults results={results} query={query} onClose={() => setFocused(false)} />}
       </div>
 
-      {/* Quick-access chips — DS NMV2026: border/default pill buttons */}
+      {/* Quick-access chips — DS: ícono 24×24 + label, border/default, radius/pill — Figma 927:12 */}
       <div className="cda-search__tags">
         {SEARCH_TAGS.map(tag => (
           <button
-            key={tag}
+            key={tag.id}
             type="button"
-            className={`cda-search__tag ${active === tag ? 'cda-search__tag--active' : ''}`}
+            className={`cda-search__tag ${active === tag.id ? 'cda-search__tag--active' : ''}`}
             onClick={() => pickTag(tag)}
           >
-            {tag}
+            <img src={tag.icon} alt="" className="cda-search__tag-icon" />
+            {tag.label}
           </button>
         ))}
       </div>
