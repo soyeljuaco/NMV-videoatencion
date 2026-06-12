@@ -109,8 +109,8 @@
 }
 
 .ayuda-item:last-child { border-bottom: none; }
-
 .ayuda-item:hover { background: #f8f9fa; }
+
 
 .ayuda-item:nth-child(1) { animation-delay: 0.10s; }
 .ayuda-item:nth-child(2) { animation-delay: 0.17s; }

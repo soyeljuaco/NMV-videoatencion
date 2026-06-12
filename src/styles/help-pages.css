@@ -1,0 +1,430 @@
+/* ══════════════════════════════════════════════════════════════════════
+   help-pages.css — DS NMV2026 — Shared base for Centro de Ayuda pages
+   Prefijo: ca- (Centro Ayuda)
+
+   Uso:
+     import '../../styles/help-pages.css'  en cada sub-página de ayuda.
+
+   Qué cubre:
+     · Reduced motion para reveal-block
+     · Hero card — filas, icono, texto, sub-label, valor
+     · Hero — tipografía título y subtítulo
+     · Section title / section sub — tipografía base (sin color — lo pone la página)
+     · ca-info-card — tarjeta con badge + cuerpo de texto
+     · ca-card — tarjeta blanca base (steps card, docs card, etc.)
+     · Sistema de pasos completo (steps list → step → line → icon → name → desc)
+     · ca-faq__title — base tipográfica del título FAQ (sin tamaño — lo pone la página)
+     · ca-section__inner > .reveal-block — propagación flex para páginas nuevas
+
+   Reglas fijas del DS:
+     · Iconos de pasos SIEMPRE llevan bg (bg-color lo define la página via su clase)
+     · Nunca 15px — siempre 16px para body text
+     · Nunca transform:translateY en hover — solo shadow/color
+     · strokeWidth="1.5" en todos los SVG
+══════════════════════════════════════════════════════════════════════ */
+
+/* ══ Reduced motion ══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-block {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ══ Hero — tipografía ═══════════════════════════════════════════════════ */
+
+.ca-hero__title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 1.05;
+  color: #ffffff;
+  margin: 0;
+}
+
+.ca-hero__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+}
+
+/* ══ Hero card — sub-elementos ═══════════════════════════════════════════ */
+
+.ca-hero__card-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ca-hero__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.ca-hero__card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ca-hero__card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ca-hero__card-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.3;
+}
+
+.ca-hero__card-val {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+/* ══ Section — tipografía base ═══════════════════════════════════════════ */
+
+/* Color lo define la página; el shared solo da forma */
+.ca-section__title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.ca-section__sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #495057;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ══ ca-info-card — tarjeta con badge + cuerpo ═══════════════════════════ */
+
+.ca-info-card {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 16px;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ca-info-card__head-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Badge — sin color de fondo: la página lo define via su propia clase */
+.ca-info-card__badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ca-info-card__badge-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(35%) sepia(94%) saturate(578%)
+          hue-rotate(167deg) brightness(102%) contrast(104%);
+}
+
+.ca-info-card__title {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #212529;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.ca-info-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ca-info-card__body p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #495057;
+  margin: 0;
+}
+
+.ca-info-card__body strong {
+  font-weight: 700;
+  color: #495057;
+}
+
+/* ══ ca-card — tarjeta blanca base ══════════════════════════════════════ */
+
+.ca-card {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 16px;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
+  padding: 28px;
+}
+
+/* ══ Sistema de pasos ════════════════════════════════════════════════════ */
+
+.ca-steps__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ca-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* Columna izquierda: número + línea conectora */
+.ca-step__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  /* width: la página lo define (br: 30px, ges: 36px) */
+}
+
+.ca-step__line {
+  width: 2px;
+  flex: 1;
+  min-height: 20px;
+  background: #dee2e6;
+  margin: 4px 0;
+}
+
+.ca-step__content {
+  flex: 1;
+  padding-bottom: 20px;
+}
+
+.ca-step:last-child .ca-step__content {
+  padding-bottom: 0;
+}
+
+/* Fila de título: icono + nombre */
+.ca-step__title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+/*
+  Icono de paso — SIEMPRE lleva fondo (DS NMV2026).
+  Esta clase provee estructura y tamaño; la página añade color/bg via su propia clase:
+    .br-step__icon { color: #0085ca; background: rgba(0,133,202,0.08); }
+    .ges-step__icon { color: #713474; background: rgba(113,52,116,0.08); }
+*/
+.ca-step__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.ca-step__name {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #212529;
+  line-height: 1.4;
+}
+
+.ca-step__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #495057;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ══ FAQ title — base ════════════════════════════════════════════════════ */
+
+/*
+  Tamaño y margen los define la página:
+    .br-faq__title  { font-size: 36px; margin: 0 0 36px; }
+    .ges-faq__title { font-size: 48px; margin: 0 0 48px; }
+*/
+.ca-faq__title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  color: #212529;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* ══ Sección de contacto ════════════════════════════════════════════════ */
+
+.ca-contact {
+  background: linear-gradient(135deg, #00327c 0%, #014fa6 40%, #0085ca 100%);
+  padding: 72px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.ca-contact__inner {
+  width: 100%;
+  max-width: 1160px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+@media (min-width: 900px) {
+  .ca-contact__inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.ca-contact__left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 900px) {
+  .ca-contact__left { max-width: 300px; }
+}
+
+.ca-contact__eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+.ca-contact__title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.ca-contact__title strong {
+  font-weight: 800;
+}
+
+.ca-contact__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  flex: 1;
+}
+
+@media (min-width: 900px) {
+  .ca-contact__cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tarjeta de canal de contacto */
+.ca-ccard {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ca-ccard__icon-wrap {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.ca-ccard__icon {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+}
+
+.ca-ccard__title {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.ca-ccard__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.ca-ccard__cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+/* ══ reveal-block propagation (para páginas nuevas) ═══════════════════ */
+
+/*
+  Cuando una página usa la clase ca-section__inner en su contenedor,
+  el reveal-block hijo hereda automáticamente el layout flex column.
+  Páginas existentes mantienen sus selectores específicos (ges-que-es__inner, etc.)
+*/
+.ca-section__inner > .reveal-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

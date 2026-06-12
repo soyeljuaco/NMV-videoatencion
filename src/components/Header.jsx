@@ -78,7 +78,7 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
           <img src={A.logo} alt="Ir al inicio — Nueva Masvida" className="w-[140px] h-[40px] object-contain" />
         </button>
         <div className="flex items-center gap-3">
-          <button className="bg-[#ef9033] text-white text-xs font-semibold rounded-full px-3 py-1.5 hover:bg-[#d87f25] transition-colors whitespace-nowrap">
+          <button className="bg-[#ef9033] text-white text-xs font-semibold rounded-full px-3 py-1.5 whitespace-nowrap">
             Sucursal Virtual
           </button>
           <button
@@ -98,7 +98,7 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
 
         {/* Regular nav items */}
         {NAV_ITEMS.map((item, i) => (
-          <button key={i} className="flex items-center justify-between w-full text-white text-sm font-medium px-4 py-3.5 border-b border-white/10 hover:bg-white/10 transition-colors text-left">
+          <button key={i} className="flex items-center justify-between w-full text-white text-sm font-medium px-4 py-3.5 border-b border-white/10 text-left">
             <span>{item}</span>
             <span className="text-white/60 text-lg leading-none">›</span>
           </button>
@@ -107,7 +107,7 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
         {/* Ayuda — con sub-items expandibles */}
         <button
           onClick={() => setMobileAyudaOpen(v => !v)}
-          className="flex items-center justify-between w-full text-white text-sm font-medium px-4 py-3.5 border-b border-white/10 hover:bg-white/10 transition-colors text-left"
+          className="flex items-center justify-between w-full text-white text-sm font-medium px-4 py-3.5 border-b border-white/10 text-left"
         >
           <span>Ayuda</span>
           <span className={`text-white/60 text-base leading-none transition-transform duration-200 ${mobileAyudaOpen ? 'rotate-90' : ''}`}>›</span>
@@ -148,8 +148,8 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
                 <span className="text-[#6c757d] text-sm">Buscar</span>
               </div>
               <div className="flex items-center gap-4">
-                <button className="text-[#0085ca] text-sm font-medium h-10 px-2 hover:underline">EMPLEADORES</button>
-                <button className="text-[#0085ca] text-sm font-medium h-10 px-2 hover:underline">PRESTADORES</button>
+                <button className="text-[#0085ca] text-sm font-medium h-10 px-2 ">EMPLEADORES</button>
+                <button className="text-[#0085ca] text-sm font-medium h-10 px-2 ">PRESTADORES</button>
                 <button className="btn-sv bg-[#ef9033] text-white text-sm font-medium h-10 rounded-full px-5">Sucursal Virtual</button>
               </div>
             </div>
@@ -225,7 +225,7 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
         {/* Breadcrumb */}
         <div className="bg-white border-b border-[#dee2e6] flex items-start justify-center h-[45px]">
           <div className="w-[1200px] flex items-center gap-2 pt-3">
-            <button onClick={onGoHome} className="text-[#0085ca] text-base font-semibold hover:underline cursor-pointer transition-colors focus-visible:outline-none">
+            <button onClick={onGoHome} className="text-[#0085ca] text-base font-semibold hover:underline cursor-pointer focus-visible:outline-none">
               Inicio
             </button>
             <img src={A.iconBreadChevron} alt=">" className="w-3.5 h-3.5 flex-shrink-0" />
@@ -233,7 +233,7 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
               <>
                 <button
                   onClick={breadcrumbParent.onClick}
-                  className="text-[#0085ca] text-base font-semibold hover:underline cursor-pointer transition-colors focus-visible:outline-none"
+                  className="text-[#0085ca] text-base font-semibold hover:underline cursor-pointer focus-visible:outline-none"
                 >
                   {breadcrumbParent.label}
                 </button>

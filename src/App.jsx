@@ -10,9 +10,6 @@ import Step3Hora from './pages/Step3Hora.jsx'
 import Step4Confirm from './pages/Step4Confirm.jsx'
 import ConfirmFinal from './pages/ConfirmFinal.jsx'
 import MisCitas from './pages/SucursalVirtual/MisCitas/MisCitas.jsx'
-import CentroDeAyuda from './pages/CentroDeAyuda/CentroDeAyuda.jsx'
-import BonosReembolsos from './pages/BonosReembolsos/BonosReembolsos.jsx'
-import GesAugeCaec from './pages/GesAugeCaec/GesAugeCaec.jsx'
 import ModalRutValidacion from './dialogs/ModalRutValidacion.jsx'
 import ModalClaveSucursal from './dialogs/ModalClaveSucursal.jsx'
 import ModalNoAfiliado from './dialogs/ModalNoAfiliado.jsx'
@@ -38,31 +35,16 @@ function fetchNombreAfiliado(rut) {
   return NOMBRES[idx]
 }
 
-// ── URL ↔ page mapping ───────────────────────────────────────────────────────
-const PATH_MAP = {
-  '/centro-de-ayuda':    'centroDeAyuda',
-  '/bonos-y-reembolsos': 'bonosReembolsos',
-  '/GES-AUGE-CAEC':      'gesAugeCaec',
-}
-function pageFromPath(path) { return PATH_MAP[path] ?? 'landing' }
-
 export default function App() {
-  const [page, setPage]       = useState(() => pageFromPath(window.location.pathname))
+  const [page, setPage]       = useState('landing')
   const [step, setStep]       = useState(1)
   const [booking, setBooking] = useState(INITIAL)
   const [modal, setModal]     = useState(null) // null | 'rut' | 'clave' | 'noAfiliado' | 'paso1'
   const [rutIngresado, setRutIngresado] = useState('')
   const wizardRef     = useRef(null)
-  const wizardCardRef = useRef(null) // apunta al card blanco del wizard
+  const wizardCardRef = useRef(null)
 
-  // Handle browser back/forward
-  useEffect(() => {
-    function onPop() { setPage(pageFromPath(window.location.pathname)) }
-    window.addEventListener('popstate', onPop)
-    return () => window.removeEventListener('popstate', onPop)
-  }, [])
-
-  function scrollToWizard() {
+  function scrollToTop() {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }, 50)
@@ -70,7 +52,7 @@ export default function App() {
 
   function goToStep(n) {
     setStep(n)
-    scrollToWizard()
+    scrollToTop()
   }
 
   function set(key, val) {
@@ -99,34 +81,32 @@ export default function App() {
 
   function handleClaveOk() {
     setModal(null)
-    // Pre-fill RUT + nombre from sucursal virtual data
     const nombre = fetchNombreAfiliado(rutIngresado)
     setBooking({ ...INITIAL, rut: rutIngresado, nombre })
     setPage('wizard')
     setStep(1)
-    scrollToWizard()
+    scrollToTop()
   }
 
   // ── Wizard navigation ────────────────────────────────────
   function goNext() {
-    // After step 1: show Paso1 dialog ONLY for "trámite administrativo"
     if (step === 1 && booking.motivo === 'tramite') {
       setModal('paso1')
       return
     }
     if (step < 4) {
       setStep(s => s + 1)
-      scrollToWizard()
+      scrollToTop()
     } else {
       setPage('done')
-      scrollToWizard()
+      scrollToTop()
     }
   }
 
   function goBack() {
     if (step > 1) {
       setStep(s => s - 1)
-      scrollToWizard()
+      scrollToTop()
     }
   }
 
@@ -144,33 +124,12 @@ export default function App() {
     setBooking(b => ({ ...INITIAL, rut: b.rut, nombre: b.nombre }))
     setPage('wizard')
     setStep(1)
-    scrollToWizard()
+    scrollToTop()
   }
 
   // ── Mis Citas navigation ─────────────────────────────────
   function goToMisCitas() {
     setPage('misCitas')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  // ── Centro de Ayuda navigation ───────────────────────────
-  function goToCentroDeAyuda() {
-    setPage('centroDeAyuda')
-    window.history.pushState({}, '', '/centro-de-ayuda')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  // ── Bonos y Reembolsos navigation ────────────────────────
-  function goToBonosReembolsos() {
-    setPage('bonosReembolsos')
-    window.history.pushState({}, '', '/bonos-y-reembolsos')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  // ── GES / AUGE / CAEC navigation ─────────────────────────
-  function goToGesAugeCaec() {
-    setPage('gesAugeCaec')
-    window.history.pushState({}, '', '/GES-AUGE-CAEC')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -224,19 +183,8 @@ export default function App() {
         : (
           <Header
             onGoHome={restart}
-            onCentroDeAyuda={goToCentroDeAyuda}
             onVideoAtencion={restart}
-            breadcrumbLabel={
-              page === 'centroDeAyuda'   ? 'Centro de ayuda'    :
-              page === 'bonosReembolsos' ? 'Bonos y reembolsos' :
-              page === 'gesAugeCaec'     ? 'GES / AUGE / CAEC'  :
-              'Videoatención'
-            }
-            breadcrumbParent={
-              page === 'bonosReembolsos' || page === 'gesAugeCaec'
-                ? { label: 'Centro de ayuda', onClick: goToCentroDeAyuda }
-                : undefined
-            }
+            breadcrumbLabel="Videoatención"
           />
         )
       }
@@ -244,27 +192,6 @@ export default function App() {
       <main className="flex-1">
         {page === 'landing' && (
           <Landing onStart={openRutModal} />
-        )}
-
-        {page === 'centroDeAyuda' && (
-          <CentroDeAyuda
-            onAgendar={openRutModal}
-            onGoHome={restart}
-            onBonosReembolsos={goToBonosReembolsos}
-            onGesAugeCaec={goToGesAugeCaec}
-          />
-        )}
-
-        {page === 'bonosReembolsos' && (
-          <BonosReembolsos
-            onAgendar={openRutModal}
-          />
-        )}
-
-        {page === 'gesAugeCaec' && (
-          <GesAugeCaec
-            onAgendar={openRutModal}
-          />
         )}
 
         {page === 'misCitas' && (

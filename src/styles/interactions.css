@@ -25,10 +25,16 @@
   position: relative;
   border-radius: 9999px;
   padding: 4px 10px;
-  transition: background-color 180ms ease-out;
 }
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+
+/* Primer ítem: sin padding izquierdo */
+.nav-link:first-child {
+  padding-left: 0;
+}
+
+/* Último ítem (Ayuda, dentro de .ayuda-trigger): sin padding derecho */
+.ayuda-trigger .nav-link {
+  padding-right: 0;
 }
 
 
