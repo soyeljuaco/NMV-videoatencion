@@ -209,7 +209,7 @@ const CONTACTS = [
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
-export default function CentroDeAyuda({ onAgendar }) {
+export default function CentroDeAyuda({ onAgendar, onBonosReembolsos }) {
 
   const hero    = useReveal()
   const cats    = useReveal({ threshold: 0.06 })
@@ -243,7 +243,7 @@ export default function CentroDeAyuda({ onAgendar }) {
             <h1 className="cda-hero__title">¿Cómo podemos ayudarte?</h1>
           </div>
 
-          <HelpSearchBar />
+          <HelpSearchBar onBonosReembolsos={onBonosReembolsos} />
         </div>
       </section>
 
@@ -266,7 +266,12 @@ export default function CentroDeAyuda({ onAgendar }) {
 
             <div className="cda-cats__grid">
               {CATEGORIES.map((cat, i) => (
-                <CatCard key={cat.id} cat={cat} delay={i * 55} />
+                <CatCard
+                  key={cat.id}
+                  cat={cat}
+                  delay={i * 55}
+                  onClick={cat.id === 'bonos' ? onBonosReembolsos : undefined}
+                />
               ))}
             </div>
           </div>
@@ -333,7 +338,7 @@ export default function CentroDeAyuda({ onAgendar }) {
 
 // ── Internal sub-components ───────────────────────────────────────────────────
 
-function HelpSearchBar() {
+function HelpSearchBar({ onBonosReembolsos }) {
   const [query,  setQuery]  = useState('')
   const [active, setActive] = useState(null)
   const [phIdx,  setPhIdx]  = useState(0)
@@ -451,7 +456,14 @@ function HelpSearchBar() {
         </div>
 
         {/* Results panel */}
-        {showPanel && <SearchResults results={results} query={query} onClose={() => setFocused(false)} />}
+        {showPanel && (
+          <SearchResults
+            results={results}
+            query={query}
+            onClose={() => setFocused(false)}
+            onBonosReembolsos={onBonosReembolsos}
+          />
+        )}
       </div>
 
       {/* Quick-access chips — DS: ícono 24×24 + label, border/default, radius/pill — Figma 927:12 */}
@@ -474,7 +486,7 @@ function HelpSearchBar() {
 
 // ── Search results panel ──────────────────────────────────────────────────────
 
-function SearchResults({ results, query, onClose }) {
+function SearchResults({ results, query, onClose, onBonosReembolsos }) {
   const hasResults = results && (results.cats.length > 0 || results.faqs.length > 0)
 
   function hi(text) {
@@ -516,7 +528,7 @@ function SearchResults({ results, query, onClose }) {
                 className="cda-results__item"
                 style={{ animationDelay: `${d}ms` }}
                 role="option"
-                onClick={onClose}
+                onClick={() => { onClose(); if (cat.id === 'bonos') onBonosReembolsos?.() }}
               >
                 <div className="cda-results__item-text">
                   <span className="cda-results__item-title">{hi(cat.title)}</span>
@@ -566,12 +578,13 @@ function SearchResults({ results, query, onClose }) {
 // Hover: "Floating Card" — scale(1.05) translateY(-6px) sobre vecinas, sombra azul
 // Figma 934:55 (versión actualizada sin imagen de portada)
 
-function CatCard({ cat, delay }) {
+function CatCard({ cat, delay, onClick }) {
   return (
     <button
       className="cda-cat"
       style={{ '--delay': `${delay}ms` }}
       aria-label={cat.title}
+      onClick={onClick}
     >
       {/* Icon badge + title en misma fila — DS: surface/icon-blue, gap sp-3 */}
       <div className="cda-cat__head-row">

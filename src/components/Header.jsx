@@ -41,7 +41,7 @@ const AYUDA_ITEMS = [
 ]
 
 // ── Component ────────────────────────────────────────────────────────────────
-export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, breadcrumbLabel = 'Videoatención' }) {
+export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, breadcrumbLabel = 'Videoatención', breadcrumbParent }) {
   const [menuOpen,  setMenuOpen]  = useState(false)  // mobile hamburger
   const [ayudaOpen, setAyudaOpen] = useState(false)  // desktop dropdown
   const [mobileAyudaOpen, setMobileAyudaOpen] = useState(false) // mobile sub
@@ -229,7 +229,20 @@ export default function Header({ onGoHome, onCentroDeAyuda, onVideoAtencion, bre
               Inicio
             </button>
             <img src={A.iconBreadChevron} alt=">" className="w-3.5 h-3.5 flex-shrink-0" />
-            <span className="text-[#495057] text-base">{breadcrumbLabel}</span>
+            {breadcrumbParent ? (
+              <>
+                <button
+                  onClick={breadcrumbParent.onClick}
+                  className="text-[#0085ca] text-base font-semibold hover:underline cursor-pointer transition-colors focus-visible:outline-none"
+                >
+                  {breadcrumbParent.label}
+                </button>
+                <img src={A.iconBreadChevron} alt=">" className="w-3.5 h-3.5 flex-shrink-0" />
+                <span className="text-[#495057] text-base">{breadcrumbLabel}</span>
+              </>
+            ) : (
+              <span className="text-[#495057] text-base">{breadcrumbLabel}</span>
+            )}
           </div>
         </div>
 

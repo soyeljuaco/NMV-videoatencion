@@ -222,6 +222,11 @@ export default function App() {
               page === 'bonosReembolsos'  ? 'Bonos y reembolsos' :
               'Videoatención'
             }
+            breadcrumbParent={
+              page === 'bonosReembolsos'
+                ? { label: 'Centro de ayuda', onClick: goToCentroDeAyuda }
+                : undefined
+            }
           />
         )
       }
@@ -235,6 +240,7 @@ export default function App() {
           <CentroDeAyuda
             onAgendar={openRutModal}
             onGoHome={restart}
+            onBonosReembolsos={goToBonosReembolsos}
           />
         )}
 
