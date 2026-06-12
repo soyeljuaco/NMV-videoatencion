@@ -282,7 +282,7 @@
 
 .br-tipo-card__desc {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.65;
   color: #495057;
   margin: 0;
@@ -368,7 +368,7 @@
 
 .br-tabs__btn {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   color: #495057;
   background: transparent;
@@ -572,7 +572,7 @@
 
 .br-step__name {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   color: #212529;
   line-height: 1.4;
@@ -719,7 +719,7 @@
 
 .br-ccard__title {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.3;
