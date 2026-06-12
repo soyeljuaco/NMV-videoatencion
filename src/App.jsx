@@ -11,6 +11,7 @@ import Step4Confirm from './pages/Step4Confirm.jsx'
 import ConfirmFinal from './pages/ConfirmFinal.jsx'
 import MisCitas from './pages/SucursalVirtual/MisCitas/MisCitas.jsx'
 import CentroDeAyuda from './pages/CentroDeAyuda/CentroDeAyuda.jsx'
+import BonosReembolsos from './pages/BonosReembolsos/BonosReembolsos.jsx'
 import ModalRutValidacion from './dialogs/ModalRutValidacion.jsx'
 import ModalClaveSucursal from './dialogs/ModalClaveSucursal.jsx'
 import ModalNoAfiliado from './dialogs/ModalNoAfiliado.jsx'
@@ -37,7 +38,10 @@ function fetchNombreAfiliado(rut) {
 }
 
 // ── URL ↔ page mapping ───────────────────────────────────────────────────────
-const PATH_MAP = { '/centro-de-ayuda': 'centroDeAyuda' }
+const PATH_MAP = {
+  '/centro-de-ayuda':    'centroDeAyuda',
+  '/bonos-y-reembolsos': 'bonosReembolsos',
+}
 function pageFromPath(path) { return PATH_MAP[path] ?? 'landing' }
 
 export default function App() {
@@ -154,6 +158,13 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  // ── Bonos y Reembolsos navigation ────────────────────────
+  function goToBonosReembolsos() {
+    setPage('bonosReembolsos')
+    window.history.pushState({}, '', '/bonos-y-reembolsos')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   // Stepper: use step; if done show 5 (all green)
   const stepperCurrent = page === 'done' ? 5 : step
 
@@ -206,7 +217,11 @@ export default function App() {
             onGoHome={restart}
             onCentroDeAyuda={goToCentroDeAyuda}
             onVideoAtencion={restart}
-            breadcrumbLabel={page === 'centroDeAyuda' ? 'Centro de ayuda' : 'Videoatención'}
+            breadcrumbLabel={
+              page === 'centroDeAyuda'    ? 'Centro de ayuda'    :
+              page === 'bonosReembolsos'  ? 'Bonos y reembolsos' :
+              'Videoatención'
+            }
           />
         )
       }
@@ -220,6 +235,12 @@ export default function App() {
           <CentroDeAyuda
             onAgendar={openRutModal}
             onGoHome={restart}
+          />
+        )}
+
+        {page === 'bonosReembolsos' && (
+          <BonosReembolsos
+            onAgendar={openRutModal}
           />
         )}
 
