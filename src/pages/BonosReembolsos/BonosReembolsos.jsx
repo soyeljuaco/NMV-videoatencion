@@ -408,7 +408,7 @@ export default function BonosReembolsos({ onAgendar }) {
 
 function ClockIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5"/>
       <path d="M12 7v5.5l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
@@ -417,7 +417,7 @@ function ClockIcon() {
 
 function DigitalIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.5"/>
       <path d="M8 21h8M12 17v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       <path d="M9 9l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -427,7 +427,7 @@ function DigitalIcon() {
 
 function BankIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
       <path d="M16 15a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" stroke="currentColor" strokeWidth="1.5"/>
       <path d="M2 11h20" stroke="currentColor" strokeWidth="1.5"/>
@@ -438,7 +438,7 @@ function BankIcon() {
 
 function BoltIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M13 2L4.5 13.5H11L10 22L19.5 10.5H13L13 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
     </svg>
   )
