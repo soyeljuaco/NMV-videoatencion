@@ -302,7 +302,7 @@
   align-items: center;
   gap: 10px;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #495057;
 }
 
@@ -727,15 +727,17 @@
 
 .br-ccard__desc {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.5;
+  flex: 1;
 }
 
 .br-ccard__cta {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
-  margin-top: 4px;
+  margin-top: auto;
+  padding-top: 8px;
 }
