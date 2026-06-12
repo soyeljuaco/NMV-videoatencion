@@ -12,6 +12,7 @@ import ConfirmFinal from './pages/ConfirmFinal.jsx'
 import MisCitas from './pages/SucursalVirtual/MisCitas/MisCitas.jsx'
 import CentroDeAyuda from './pages/CentroDeAyuda/CentroDeAyuda.jsx'
 import BonosReembolsos from './pages/BonosReembolsos/BonosReembolsos.jsx'
+import GesAugeCaec from './pages/GesAugeCaec/GesAugeCaec.jsx'
 import ModalRutValidacion from './dialogs/ModalRutValidacion.jsx'
 import ModalClaveSucursal from './dialogs/ModalClaveSucursal.jsx'
 import ModalNoAfiliado from './dialogs/ModalNoAfiliado.jsx'
@@ -41,6 +42,7 @@ function fetchNombreAfiliado(rut) {
 const PATH_MAP = {
   '/centro-de-ayuda':    'centroDeAyuda',
   '/bonos-y-reembolsos': 'bonosReembolsos',
+  '/GES-AUGE-CAEC':      'gesAugeCaec',
 }
 function pageFromPath(path) { return PATH_MAP[path] ?? 'landing' }
 
@@ -165,6 +167,13 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  // ── GES / AUGE / CAEC navigation ─────────────────────────
+  function goToGesAugeCaec() {
+    setPage('gesAugeCaec')
+    window.history.pushState({}, '', '/GES-AUGE-CAEC')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   // Stepper: use step; if done show 5 (all green)
   const stepperCurrent = page === 'done' ? 5 : step
 
@@ -218,12 +227,13 @@ export default function App() {
             onCentroDeAyuda={goToCentroDeAyuda}
             onVideoAtencion={restart}
             breadcrumbLabel={
-              page === 'centroDeAyuda'    ? 'Centro de ayuda'    :
-              page === 'bonosReembolsos'  ? 'Bonos y reembolsos' :
+              page === 'centroDeAyuda'   ? 'Centro de ayuda'    :
+              page === 'bonosReembolsos' ? 'Bonos y reembolsos' :
+              page === 'gesAugeCaec'     ? 'GES / AUGE / CAEC'  :
               'Videoatención'
             }
             breadcrumbParent={
-              page === 'bonosReembolsos'
+              page === 'bonosReembolsos' || page === 'gesAugeCaec'
                 ? { label: 'Centro de ayuda', onClick: goToCentroDeAyuda }
                 : undefined
             }
@@ -241,11 +251,18 @@ export default function App() {
             onAgendar={openRutModal}
             onGoHome={restart}
             onBonosReembolsos={goToBonosReembolsos}
+            onGesAugeCaec={goToGesAugeCaec}
           />
         )}
 
         {page === 'bonosReembolsos' && (
           <BonosReembolsos
+            onAgendar={openRutModal}
+          />
+        )}
+
+        {page === 'gesAugeCaec' && (
+          <GesAugeCaec
             onAgendar={openRutModal}
           />
         )}

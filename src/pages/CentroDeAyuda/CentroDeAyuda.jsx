@@ -209,7 +209,7 @@ const CONTACTS = [
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
-export default function CentroDeAyuda({ onAgendar, onBonosReembolsos }) {
+export default function CentroDeAyuda({ onAgendar, onBonosReembolsos, onGesAugeCaec }) {
 
   const hero    = useReveal()
   const cats    = useReveal({ threshold: 0.06 })
@@ -243,7 +243,7 @@ export default function CentroDeAyuda({ onAgendar, onBonosReembolsos }) {
             <h1 className="cda-hero__title">¿Cómo podemos ayudarte?</h1>
           </div>
 
-          <HelpSearchBar onBonosReembolsos={onBonosReembolsos} />
+          <HelpSearchBar onBonosReembolsos={onBonosReembolsos} onGesAugeCaec={onGesAugeCaec} />
         </div>
       </section>
 
@@ -270,7 +270,11 @@ export default function CentroDeAyuda({ onAgendar, onBonosReembolsos }) {
                   key={cat.id}
                   cat={cat}
                   delay={i * 55}
-                  onClick={cat.id === 'bonos' ? onBonosReembolsos : undefined}
+                  onClick={
+                    cat.id === 'bonos' ? onBonosReembolsos :
+                    cat.id === 'ges'   ? onGesAugeCaec     :
+                    undefined
+                  }
                 />
               ))}
             </div>
@@ -338,7 +342,7 @@ export default function CentroDeAyuda({ onAgendar, onBonosReembolsos }) {
 
 // ── Internal sub-components ───────────────────────────────────────────────────
 
-function HelpSearchBar({ onBonosReembolsos }) {
+function HelpSearchBar({ onBonosReembolsos, onGesAugeCaec }) {
   const [query,  setQuery]  = useState('')
   const [active, setActive] = useState(null)
   const [phIdx,  setPhIdx]  = useState(0)
@@ -462,6 +466,7 @@ function HelpSearchBar({ onBonosReembolsos }) {
             query={query}
             onClose={() => setFocused(false)}
             onBonosReembolsos={onBonosReembolsos}
+            onGesAugeCaec={onGesAugeCaec}
           />
         )}
       </div>
@@ -486,7 +491,7 @@ function HelpSearchBar({ onBonosReembolsos }) {
 
 // ── Search results panel ──────────────────────────────────────────────────────
 
-function SearchResults({ results, query, onClose, onBonosReembolsos }) {
+function SearchResults({ results, query, onClose, onBonosReembolsos, onGesAugeCaec }) {
   const hasResults = results && (results.cats.length > 0 || results.faqs.length > 0)
 
   function hi(text) {
@@ -528,7 +533,11 @@ function SearchResults({ results, query, onClose, onBonosReembolsos }) {
                 className="cda-results__item"
                 style={{ animationDelay: `${d}ms` }}
                 role="option"
-                onClick={() => { onClose(); if (cat.id === 'bonos') onBonosReembolsos?.() }}
+                onClick={() => {
+                  onClose()
+                  if (cat.id === 'bonos') onBonosReembolsos?.()
+                  if (cat.id === 'ges')   onGesAugeCaec?.()
+                }}
               >
                 <div className="cda-results__item-text">
                   <span className="cda-results__item-title">{hi(cat.title)}</span>
