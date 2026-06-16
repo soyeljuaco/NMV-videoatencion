@@ -35,41 +35,80 @@ export default function Landing({ onStart }) {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="bg-white py-10 xl:py-20 flex flex-col items-center overflow-hidden relative">
-        <div className="w-full xl:w-[1200px] px-4 xl:px-0 flex flex-col xl:flex-row items-center xl:items-start xl:justify-between relative gap-8 xl:gap-0">
+      <section className="bg-white relative overflow-hidden" style={{ paddingTop: '80px', paddingBottom: '80px', minHeight: '678px' }}>
+
+        {/* Background: photo + white gradient overlay */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute inset-0 overflow-hidden">
+            <img
+              src="/img-hero-new.png"
+              alt=""
+              className="absolute max-w-none"
+              style={{ left: '33.32%', top: '0', width: '69.81%', height: 'auto' }}
+            />
+          </div>
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(82.17deg, #ffffff 38.16%, rgba(255,255,255,0) 54.17%)' }}
+          />
+        </div>
+
+        {/* Content container */}
+        <div className="relative w-full xl:w-[1200px] mx-auto px-4 xl:px-0">
 
           {/* Text column */}
-          <div className="flex flex-col gap-4 xl:gap-6 items-center xl:items-start w-full xl:w-[681px] xl:self-stretch text-center xl:text-left">
-            <div className="flex items-center gap-2.5 rounded-full">
-              <img src={icoHero} alt="" className="w-8 h-8 object-contain" />
-              <span className="text-[#723585] text-xs font-semibold uppercase tracking-[0.6px]">Nueva Experiencia</span>
+          <div className="flex flex-col gap-6 items-center xl:items-start w-full xl:w-[681px] text-center xl:text-left">
+
+            {/* Badge */}
+            <div className="flex items-center gap-2.5">
+              <img src="/icons/elem-hero-badge.png" alt="" className="w-8 h-[31px] object-contain flex-shrink-0" />
+              <span className="text-[#723585] text-[12px] font-semibold uppercase tracking-[0.6px]">NUEVA EXPERIENCIA</span>
             </div>
+
+            {/* Heading */}
             <div className="flex flex-col items-center xl:items-start">
-              <h1 className="font-display font-medium text-[36px] leading-[40px] xl:text-[72px] xl:leading-[76px] text-[#212529] m-0">Agenda tu </h1>
+              <h1 className="font-display font-medium text-[36px] leading-[40px] xl:text-[72px] xl:leading-[76px] text-[#212529] m-0">Agenda tu</h1>
               <h1 className="font-display font-bold text-[36px] leading-[40px] xl:text-[72px] xl:leading-[76px] text-[#212529] m-0">videoatención</h1>
             </div>
-            <p className="text-[#495057] leading-6 xl:leading-relaxed w-full xl:w-[571px]" style={{ fontSize: '24px', letterSpacing: '-0.02em' }}>
-              Atención personalizada desde donde quieras. Resuelve tus trámites sin salir de casa.
+
+            {/* Body */}
+            <p className="text-[#495057] text-base xl:text-[24px] leading-6 xl:leading-[34px] w-full">
+              Atención personalizada desde donde quieras.{' '}
+              <br className="hidden xl:block" />
+              Resuelve tus trámites sin salir de casa.
             </p>
+
+            {/* CTA */}
             <button
               onClick={onStart}
               className="btn-cta-hero bg-[#0085ca] text-white font-semibold rounded-full px-12 py-[14px] flex items-center justify-center gap-[10px] text-base leading-7 w-full xl:w-auto"
             >
-              <img src={A.iconVideoBlue} alt="" className="w-6 h-6" />
+              <img src={A.iconVideoBlue} alt="" className="w-6 h-6" style={{ filter: 'brightness(0) invert(1)' }} />
               Agendar videoatención
             </button>
           </div>
 
-          {/* Hero image — desktop only */}
-          <div className="hidden xl:block flex-shrink-0" style={{ width: '578px', height: '567px' }}>
-            <img src="/img-hero.png" alt="Videoatención Nueva Masvida" className="w-full h-full object-contain" />
+          {/* Floating confirmation card — desktop only */}
+          <div
+            className="hidden xl:flex absolute bg-white gap-3 items-center p-4 rounded-2xl"
+            style={{
+              left: '684px',
+              top: '491px',
+              boxShadow: '0px 16px 24px rgba(0,0,0,0.12)',
+            }}
+          >
+            <div
+              className="rounded-full flex items-center justify-center flex-shrink-0 w-10 h-10"
+              style={{ background: 'rgba(53,173,68,0.15)' }}
+            >
+              <img src="/icons/icon-check-hero.svg" alt="" className="w-5 h-5" />
+            </div>
+            <div className="flex flex-col gap-0.5">
+              <span className="font-bold text-[12px] leading-4 text-[#212529] whitespace-nowrap">Confirmación Inmediata</span>
+              <span className="text-[11px] leading-[16px] text-[#495057]">Hoy · 10:30 hrs</span>
+            </div>
           </div>
 
-          {/* Decoration — desktop only */}
-          <div className="hidden xl:block absolute top-6 right-0 pointer-events-none">
-            <img src={A.elemA3} alt="" className="w-9 h-9 absolute left-11 top-0" />
-            <img src={A.elemA4} alt="" className="w-11 h-11 absolute left-0 top-9" />
-          </div>
         </div>
       </section>
 
