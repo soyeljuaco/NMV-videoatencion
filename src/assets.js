@@ -99,4 +99,9 @@ export const A = {
 
   // Centro de Ayuda — decorative elements
   decoD2:             '/img/help/deco-d2.png',
+
+  // RRSS
+  iconFacebook:       I('icon-facebook.svg'),
+  iconInstagram:      I('icon-instagram.svg'),
+  iconLinkedin:       I('icon-linkedin.svg'),
 };
